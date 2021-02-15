@@ -1,7 +1,7 @@
 module.exports = {
-    css: {
-        loaderOptions: {
-            sass: {}
-        }
+  css: {
+    loaderOptions: {
+      sass: {}
     }
-};
+  }
+}
