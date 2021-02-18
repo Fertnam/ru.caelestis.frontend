@@ -1,7 +1,7 @@
 import IndexPage from '@/views/admin/Index'
 import UsersPage from '@/views/admin/Users'
 
-var LAYOUT = 'admin'
+const LAYOUT = 'admin'
 
 export default [
   {
@@ -11,7 +11,7 @@ export default [
   },
   {
     path: 'users',
-    name: `${LAYOUT}.users`
+    name: `${LAYOUT}.users`,
     component: UsersPage,
   },
 ]
