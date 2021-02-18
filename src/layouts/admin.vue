@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
     Админ-панель
-    <router-view/>
+    <router-view />
   </div>
 </template>

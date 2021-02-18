@@ -1,5 +1,3 @@
 <template>
-  <div class="page">
-    Default - Правила
-  </div>
+  <div class="page">Default - Правила</div>
 </template>

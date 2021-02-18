@@ -7,11 +7,11 @@ export default [
   {
     path: '',
     name: `${LAYOUT}.index`,
-    component: IndexPage
+    component: IndexPage,
   },
   {
     path: 'users',
     name: `${LAYOUT}.users`,
-    component: UsersPage
-  }
+    component: UsersPage,
+  },
 ]

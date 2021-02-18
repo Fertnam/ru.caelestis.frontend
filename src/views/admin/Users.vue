@@ -1,5 +1,3 @@
 <template>
-  <div class="page">
-    Админ-панель - Пользователи
-  </div>
+  <div class="page">Админ-панель - Пользователи</div>
 </template>

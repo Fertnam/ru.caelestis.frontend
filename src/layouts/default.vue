@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
     Главная
-    <router-view/>
+    <router-view />
   </div>
 </template>

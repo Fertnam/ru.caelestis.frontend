@@ -13,19 +13,19 @@ const routes = [
     path: '/',
     name: 'default',
     component: DefaultLayout,
-    children: DefaultChildren
+    children: DefaultChildren,
   },
   {
     path: '/admin',
     name: 'admin',
     component: AdminLayout,
-    children: AdminChildren
-  }
+    children: AdminChildren,
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 })
 
 export default router

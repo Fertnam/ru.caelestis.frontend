@@ -1,5 +1,3 @@
 <template>
-  <div class="page">
-    Админ-панель - Главная
-  </div>
+  <div class="page">Админ-панель - Главная</div>
 </template>

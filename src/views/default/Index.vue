@@ -1,5 +1,3 @@
 <template>
-  <div class="page">
-    Default - Главная
-  </div>
+  <div class="page">Default - Главная</div>
 </template>
