@@ -1,0 +1,1 @@
+<template>Default - Банлист</template>

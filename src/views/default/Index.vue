@@ -1,3 +1,1 @@
-<template>
-  <div class="page">Default - Главная</div>
-</template>
+<template>Default - Главная</template>

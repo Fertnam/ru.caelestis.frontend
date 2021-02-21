@@ -1,6 +1,4 @@
 <template>
-  <div class="layout">
-    Админ-панель
-    <router-view />
-  </div>
+  Админ-панель
+  <router-view />
 </template>
