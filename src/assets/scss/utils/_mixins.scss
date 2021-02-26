@@ -1,0 +1,41 @@
+/* Темная тема для блоков */
+@mixin dark-theme {
+  color: $blue;
+  background-color: $dark-blue-v2;
+}
+
+/* Светлая тема для блоков */
+@mixin light-theme($light-bg: $blue) {
+  color: $dark-blue-v2;
+  background-color: $light-bg;
+}
+
+/* Дизайнерская тень */
+@mixin box-shadow($size, $color) {
+  box-shadow: -#{$size} $size $color;
+}
+
+/* Темная тема для блоков с дизайнерской тенью */
+@mixin dark-theme-with-box-shadow($size, $color) {
+  @include dark-theme;
+  @include box-shadow($size, $color);
+}
+
+/* Светлая тема для блоков с дизайнерской тенью */
+@mixin light-theme-with-box-shadow($size, $color, $light-bg: $blue) {
+  @include light-theme($light-bg);
+  @include box-shadow($size, $color);
+}
+
+/* Плейсхолдеры для инпутов */
+@mixin placeholder($color, $opacity: 1) {
+  &::placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+    opacity: $opacity;
+  }
+}

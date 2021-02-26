@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import TheHeader from '@/components/default/Header'
-import TheNavigation from '@/components/default/Navigation'
-import TheMain from '@/components/default/Main'
-import TheAside from '@/components/default/Aside'
-import TheFooter from '@/components/default/Footer'
+import TheHeader from '@/components/default/layout/Header'
+import TheNavigation from '@/components/default/layout/Navigation'
+import TheMain from '@/components/default/layout/Main'
+import TheAside from '@/components/default/layout/Aside'
+import TheFooter from '@/components/default/layout/Footer'
 
 export default {
   components: {

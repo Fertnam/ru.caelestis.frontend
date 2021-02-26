@@ -4,7 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import DefaultLayout from '@/layouts/default'
 import AdminLayout from '@/layouts/admin'
 
-// Pages
+// Страницы
 import DefaultChildren from './default'
 import AdminChildren from './admin'
 
