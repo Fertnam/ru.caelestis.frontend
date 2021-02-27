@@ -1,5 +1,11 @@
 <template>
-  <main class="main">
+  <main :class="$style['main']">
     <router-view />
   </main>
 </template>
+
+<style lang="scss" module>
+.main {
+  @include light-theme($light-blue-v2);
+}
+</style>

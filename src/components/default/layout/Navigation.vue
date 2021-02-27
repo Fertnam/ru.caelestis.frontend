@@ -1,5 +1,5 @@
 <template>
-  <nav class="navigation">
+  <nav :class="$style['navigation']">
     <ul class="menu">
       <li class="menu__item">
         <router-link class="menu__link" :to="{ name: 'default.index' }" exact>
@@ -53,3 +53,9 @@
     </router-link>
   </nav>
 </template>
+
+<style lang="scss" module>
+.navigation {
+  @include dark-theme;
+}
+</style>

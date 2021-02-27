@@ -1,10 +1,10 @@
 <template>
-  <div class="layout">
-    <TheHeader />
-    <TheNavigation />
-    <TheMain />
-    <TheAside />
-    <TheFooter />
+  <div :class="$style['layout']">
+    <TheHeader :class="$style['header']" />
+    <TheNavigation :class="$style['navigation']" />
+    <TheMain :class="$style['main']" />
+    <TheAside :class="$style['aside']" />
+    <TheFooter :class="$style['footer']" />
   </div>
 </template>
 
@@ -25,3 +25,37 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" module>
+.layout {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    'header header'
+    'navigation navigation'
+    'main aside'
+    'footer footer';
+
+  min-height: 100vh;
+
+  & > .header {
+    grid-area: header;
+  }
+
+  & > .navigation {
+    grid-area: navigation;
+  }
+
+  & > .main {
+    grid-area: main;
+  }
+
+  & > .aside {
+    grid-area: aside;
+  }
+
+  & > .footer {
+    grid-area: footer;
+  }
+}
+</style>
