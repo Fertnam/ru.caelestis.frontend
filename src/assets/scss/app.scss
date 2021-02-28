@@ -1,20 +1,13 @@
-/* Все Utils */
-@import "utils";
-
 /* Сброс стилей */
 @import "~normalize.css";
 
 /* Подключение главного шрифта */
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-/* Глобальные стили */
+/* Дополнительный сброс */
 * {
   box-sizing: border-box;
   outline: none;
-}
-
-body {
-  font-family: 'Balsamiq Sans', Arial, sans-serif;
 }
 
 a {
@@ -22,17 +15,10 @@ a {
   text-decoration: none;
 }
 
-button, input {
-  border: none;
-}
-
 button {
   cursor: pointer;
 }
 
-.clearfix {
-  content: '';
-  display: table;
-  width: 100%;
-  clear: both;
+button, input {
+  border: none;
 }

@@ -1,1 +1,1 @@
-<template>Админ-панель</template>
+<template>Админ-панель - Главная</template>

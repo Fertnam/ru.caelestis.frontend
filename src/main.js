@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from './App'
 import router from './router'
 
 // Подключаем корневой CSS-файл
-import './assets/scss/app.scss'
+import '@scss/app.scss'
 
 createApp(App).use(router).mount('#caelestis')

@@ -1,4 +1,4 @@
-import IndexPage from '@/views/admin/Index'
+import IndexPage from '@admin-views/Index'
 
 export default [
   {

@@ -1,8 +1,8 @@
-import IndexPage from '@/views/default/Index'
-import BanlistPage from '@/views/default/Banlist'
-import DonatePage from '@/views/default/Donate'
-import RulesPage from '@/views/default/Rules'
-import RegistrationPage from '@/views/default/Registration'
+import IndexPage from '@default-views/Index'
+import BanlistPage from '@default-views/Banlist'
+import DonatePage from '@default-views/Donate'
+import RulesPage from '@default-views/Rules'
+import RegistrationPage from '@default-views/Registration'
 
 export default [
   {

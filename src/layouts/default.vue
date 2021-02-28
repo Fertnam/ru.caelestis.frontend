@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import TheHeader from '@/components/default/layout/Header'
-import TheNavigation from '@/components/default/layout/Navigation'
-import TheMain from '@/components/default/layout/Main'
-import TheAside from '@/components/default/layout/Aside'
-import TheFooter from '@/components/default/layout/Footer'
+import TheHeader from '@default-components/layout/Header'
+import TheNavigation from '@default-components/layout/Navigation'
+import TheMain from '@default-components/layout/Main'
+import TheAside from '@default-components/layout/Aside'
+import TheFooter from '@default-components/layout/Footer'
 
 export default {
   components: {
@@ -36,7 +36,7 @@ export default {
     'main aside'
     'footer footer';
 
-  min-height: 100vh;
+  composes: layout from '~@scss-modules/layout';
 
   & > .header {
     grid-area: header;
