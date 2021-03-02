@@ -1,9 +1,9 @@
 <template>
   <header :class="$style['header']">
     <router-link v-slot="{ navigate }" :to="{ name: 'default.index' }" custom>
-      <div :class="$style['logo']" @click="navigate">
+      <div :class="$style['header__logo']" @click="navigate">
         <img
-          :class="$style['logo-image']"
+          :class="$style['header__logo-image']"
           src="/images/logo.png"
           alt="Логотип"
           draggable="false"
@@ -15,10 +15,9 @@
 
 <style lang="scss" module>
 .header {
-  padding: 7%;
-  background: url('/images/default/header.png') center 85% / cover;
+  padding: 80px;
 
-  & > .logo {
+  &__logo {
     width: 250px;
     height: 60px;
 
@@ -30,7 +29,7 @@
 
     animation: pulse 2s infinite ease-in-out;
 
-    & > .logo-image {
+    &-image {
       width: 100%;
       height: 100%;
 
@@ -41,13 +40,13 @@
 
 @keyframes pulse {
   from {
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(-5deg);
   }
   to {
-    transform: scale(1);
+    transform: scale(1) rotate(0);
   }
 }
 </style>

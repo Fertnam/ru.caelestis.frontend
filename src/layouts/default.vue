@@ -1,10 +1,12 @@
 <template>
   <div :class="$style['layout']">
-    <TheHeader :class="$style['header']" />
-    <TheNavigation :class="$style['navigation']" />
-    <TheMain :class="$style['main']" />
-    <TheAside :class="$style['aside']" />
-    <TheFooter :class="$style['footer']" />
+    <div :class="$style['layout__container']">
+      <TheHeader :class="$style['layout__header']" />
+      <TheNavigation :class="$style['layout__navigation']" />
+      <TheMain :class="$style['layout__main']" />
+      <TheAside :class="$style['layout__aside']" />
+      <TheFooter :class="$style['layout__footer']" />
+    </div>
   </div>
 </template>
 
@@ -28,33 +30,45 @@ export default {
 
 <style lang="scss" module>
 .layout {
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  grid-template-areas:
-    'header header'
-    'navigation navigation'
-    'main aside'
-    'footer footer';
+  background-image: url('/images/default/header.png');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-  composes: layout from '~@scss-modules/layout';
+  composes: layout from '~@scss-blocks/layout';
 
-  & > .header {
+  &__container {
+    display: grid;
+    grid-auto-columns: 1fr 30%;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      'header header'
+      'navigation navigation'
+      'main aside'
+      'footer footer';
+
+    min-height: 100vh;
+
+    composes: container from '~@scss-blocks/container';
+  }
+
+  &__header {
     grid-area: header;
   }
 
-  & > .navigation {
+  &__navigation {
     grid-area: navigation;
   }
 
-  & > .main {
+  &__main {
     grid-area: main;
   }
 
-  & > .aside {
+  &__aside {
     grid-area: aside;
   }
 
-  & > .footer {
+  &__footer {
     grid-area: footer;
   }
 }

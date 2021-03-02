@@ -5,9 +5,9 @@
 }
 
 /* Светлая тема для блоков */
-@mixin light-theme($light-bg: $blue) {
+@mixin light-theme($background-color: $blue) {
   color: $dark-blue-v2;
-  background-color: $light-bg;
+  background-color: $background-color;
 }
 
 /* Дизайнерская тень */
@@ -16,15 +16,15 @@
 }
 
 /* Темная тема для блоков с дизайнерской тенью */
-@mixin dark-theme-with-box-shadow($size, $color) {
+@mixin dark-theme-with-box-shadow($shadow-size, $shadow-color) {
   @include dark-theme;
-  @include box-shadow($size, $color);
+  @include box-shadow($shadow-size, $shadow-color);
 }
 
 /* Светлая тема для блоков с дизайнерской тенью */
-@mixin light-theme-with-box-shadow($size, $color, $light-bg: $blue) {
-  @include light-theme($light-bg);
-  @include box-shadow($size, $color);
+@mixin light-theme-with-box-shadow($shadow-size, $shadow-color, $background-color: $blue) {
+  @include light-theme($background-color);
+  @include box-shadow($shadow-size, $shadow-color);
 }
 
 /* Плейсхолдеры для инпутов */

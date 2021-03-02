@@ -1,9 +1,11 @@
 <template>
-  <aside :class="$style['aside']">Боковая часть</aside>
+  <aside :class="$style['aside']"></aside>
 </template>
 
 <style lang="scss" module>
 .aside {
-  background-color: $light-blue-v1;
+  @include light-theme($light-blue-v1);
+
+  padding: $default-layout-areas-padding;
 }
 </style>

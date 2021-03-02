@@ -14,7 +14,7 @@ module.exports = {
         '@default-components': path.resolve('src/components/default'),
         '@admin-components': path.resolve('src/admin'),
         '@scss': path.resolve('src/assets/scss'),
-        '@scss-modules': path.resolve('src/assets/scss/modules'),
+        '@scss-blocks': path.resolve('src/assets/scss/blocks'),
         '@scss-utils': path.resolve('src/assets/scss/utils'),
       },
     },

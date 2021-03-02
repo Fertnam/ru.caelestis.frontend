@@ -17,5 +17,8 @@ $dark-red: #c22727;
 /* Длительность для анимаций */
 $transition-duration: 500ms;
 
+/* Размер padding для главных областей (они помечены grid-area) дефолтного layout */
+$default-layout-areas-padding: 30px;
+
 /* Размер box-shadow для блока caption */
 $caption-box-shadow-size: 6px;
