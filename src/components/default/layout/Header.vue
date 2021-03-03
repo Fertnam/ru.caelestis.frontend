@@ -40,7 +40,7 @@
 
 @keyframes pulse {
   from {
-    transform: scale(1) rotate(0deg);
+    transform: scale(1) rotate(0);
   }
   50% {
     transform: scale(1.1) rotate(-5deg);

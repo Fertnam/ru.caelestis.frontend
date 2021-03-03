@@ -8,7 +8,7 @@
 .footer {
   @include dark-theme;
 
-  padding: $default-layout-areas-padding;
+  padding: 50px $base-padding-of-area-for-default-layout;
 
   &__copyright {
     text-align: center;

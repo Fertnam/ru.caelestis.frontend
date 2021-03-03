@@ -8,6 +8,6 @@
 .main {
   @include light-theme($light-blue-v2);
 
-  padding: $default-layout-areas-padding;
+  padding: $base-padding-of-area-for-default-layout;
 }
 </style>

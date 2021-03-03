@@ -1,10 +1,10 @@
 /* Цвета */
-$blue: #878CB0;
+$blue: #878cb0;
 
-$light-blue-v1: #9FA1B3;
+$light-blue-v1: #9fa1b3;
 $light-blue-v2: #C6C9DE;
 
-$dark-blue-v1: #5F627D;
+$dark-blue-v1: #5f627d;
 $dark-blue-v2: #101121;
 $dark-blue-v3: #0C0D1A;
 
@@ -17,8 +17,5 @@ $dark-red: #c22727;
 /* Длительность для анимаций */
 $transition-duration: 500ms;
 
-/* Размер padding для главных областей (они помечены grid-area) дефолтного layout */
-$default-layout-areas-padding: 30px;
-
-/* Размер box-shadow для блока caption */
-$caption-box-shadow-size: 6px;
+/* Базовый размер padding для разделов дефолтного layout (они помечены через grid-area) */
+$base-padding-of-area-for-default-layout: 30px;
