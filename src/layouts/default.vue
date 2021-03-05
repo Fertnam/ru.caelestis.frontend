@@ -12,7 +12,7 @@
 
 <script>
 import TheHeader from '@default-components/layout/Header'
-import TheNavigation from '@default-components/layout/Navigation'
+import TheNavigation from '@default-components/layout/Navigation/Index'
 import TheMain from '@default-components/layout/Main'
 import TheAside from '@default-components/layout/Aside'
 import TheFooter from '@default-components/layout/Footer'
@@ -39,7 +39,7 @@ export default {
 
   &__container {
     display: grid;
-    grid-auto-columns: 1fr 30%;
+    grid-auto-columns: 1fr $aside-width-of-default-layout;
     grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
       'header header'
