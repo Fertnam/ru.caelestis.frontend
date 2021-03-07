@@ -1,24 +1,21 @@
 # ru.caelestis.frontend
 
-## Project setup
+## Установить зависимости проекта
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Запустить проект в режиме разработки
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Скомпилировать проект на продакшн
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Исправить форматирование файлов через линтер
 ```
-npm run lint
+npm run lint --fix
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

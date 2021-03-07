@@ -6,7 +6,7 @@ import router from './router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // Подключаем плагины (из папки plugins)
-import '@/plugins/font-awesome-icons'
+import '@plugins/font-awesome-icons'
 
 // Подключаем корневой CSS-файл
 import '@scss/app.scss'

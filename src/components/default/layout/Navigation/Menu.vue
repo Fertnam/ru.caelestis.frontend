@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import menu from '@/assets/data/menu.json'
+import menu from '@default-data/menu'
 
 export default {
   data() {
@@ -129,7 +129,7 @@ export default {
     top: calc(100% + #{$submenu-mark-size});
     right: 50%;
 
-    z-index: 100;
+    z-index: 50;
 
     padding: 0;
 

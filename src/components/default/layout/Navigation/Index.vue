@@ -30,6 +30,8 @@ export default {
   position: sticky;
   top: 0;
 
+  z-index: 100;
+
   display: flex;
   justify-content: space-between;
   align-items: center;

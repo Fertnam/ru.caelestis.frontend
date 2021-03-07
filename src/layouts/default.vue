@@ -30,12 +30,12 @@ export default {
 
 <style lang="scss" module>
 .layout {
-  background-image: url('/images/default/header.png');
+  background-image: url('/images/default/layout-bg.png');
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: cover;
 
-  composes: layout from '~@scss-blocks/layout';
+  composes: layout from '~@global-scss-modules/layout';
 
   &__container {
     display: grid;
@@ -49,7 +49,7 @@ export default {
 
     min-height: 100vh;
 
-    composes: container from '~@scss-blocks/container';
+    composes: container from '~@global-scss-modules/container';
   }
 
   &__header {
