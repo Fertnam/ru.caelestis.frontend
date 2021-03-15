@@ -17,6 +17,7 @@ module.exports = {
     'prettier/prettier': ['error', { singleQuote: true, semi: false }],
     semi: ['error', 'never'],
     'no-var': 'error',
+    'no-plusplus': 'off',
     'vue/order-in-components': 'error',
     'vue/require-default-prop': 'error',
     'vue/attributes-order': 'error',

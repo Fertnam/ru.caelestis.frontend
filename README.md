@@ -19,3 +19,8 @@ npm run build
 ```
 npm run lint --fix
 ```
+
+### Запустить процесс компрессии (сжатия) изображений из папки assets
+```
+npm run compress-images
+```
