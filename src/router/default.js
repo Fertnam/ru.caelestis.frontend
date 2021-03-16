@@ -1,4 +1,5 @@
 import IndexPage from '@default-views/Index'
+import ServerPage from '@default-views/Server'
 import BanlistPage from '@default-views/Banlist'
 import DonatePage from '@default-views/Donate'
 import RulesPage from '@default-views/Rules'
@@ -9,6 +10,11 @@ export default [
     path: '',
     name: 'default.index',
     component: IndexPage,
+  },
+  {
+    path: 'server/:name/:version?',
+    name: 'default.server',
+    component: ServerPage,
   },
   {
     path: 'banlist',

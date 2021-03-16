@@ -1,6 +1,6 @@
 <template>
   <div :class="$style['page']">
-    <h1 :class="captionClass">Банлист</h1>
+    <h1 :class="captionClass" v-text="caption" />
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
     return {
       captionClass: caption,
     }
+  },
+  computed: {
+    caption() {
+      return `${this.$route.params.name} ${this.$route.params.version}`
+    },
   },
 }
 </script>

@@ -11,8 +11,8 @@ module.exports = {
         '@default-views': path.resolve('src/views/default'),
         '@admin-views': path.resolve('src/views/admin'),
         '@default-components': path.resolve('src/components/default'),
-        '@admin-components': path.resolve('src/admin'),
-        '@global-components': path.resolve('src/global'),
+        '@admin-components': path.resolve('src/components/admin'),
+        '@global-components': path.resolve('src/components/global'),
         '@scss': path.resolve('src/assets/scss'),
         '@scss-utils': path.resolve('src/assets/scss/utils'),
         '@default-scss-modules': path.resolve(

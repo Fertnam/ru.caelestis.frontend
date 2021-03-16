@@ -4,7 +4,7 @@
       <div :class="$style['header__logo']" @click="navigate">
         <img
           :class="$style['header__logo-image']"
-          src="/images/logo.png"
+          src="/images/global/logo.png"
           alt="Логотип"
           draggable="false"
         />
