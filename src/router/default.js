@@ -1,9 +1,9 @@
-import IndexPage from '@default-views/Index'
-import ServerPage from '@default-views/Server'
-import BanlistPage from '@default-views/Banlist'
-import DonatePage from '@default-views/Donate'
-import RulesPage from '@default-views/Rules'
-import RegistrationPage from '@default-views/Registration'
+const IndexPage = () => import('@default-views/Index')
+const ServerPage = () => import('@default-views/Server')
+const BanlistPage = () => import('@default-views/Banlist')
+const DonatePage = () => import('@default-views/Donate')
+const RulesPage = () => import('@default-views/Rules')
+const RegistrationPage = () => import('@default-views/Registration')
 
 export default [
   {

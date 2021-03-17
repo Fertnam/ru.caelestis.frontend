@@ -1,4 +1,4 @@
-import IndexPage from '@admin-views/Index'
+const IndexPage = () => import('@admin-views/Index')
 
 export default [
   {

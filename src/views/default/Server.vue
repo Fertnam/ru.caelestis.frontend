@@ -13,10 +13,8 @@ export default {
       captionStyle: caption,
     }
   },
-  computed: {
-    caption() {
-      return `${this.$route.params.name} ${this.$route.params.version}`
-    },
+  created() {
+    this.caption = `${this.$route.params.name} ${this.$route.params.version}`
   },
 }
 </script>
