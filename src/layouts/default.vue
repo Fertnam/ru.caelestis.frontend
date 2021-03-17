@@ -14,7 +14,7 @@
 import TheHeader from '@default-components/layout/Header'
 import TheNavigation from '@default-components/layout/Navigation/Index'
 import TheMain from '@default-components/layout/Main'
-import TheAside from '@default-components/layout/Aside'
+import TheAside from '@default-components/layout/Aside/Index'
 import TheFooter from '@default-components/layout/Footer'
 
 export default {
