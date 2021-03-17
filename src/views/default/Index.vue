@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style['page']">
-    <h1 :class="captionClass">Главная</h1>
+  <div :class="$style.page">
+    <h1 :class="captionStyle">Главная</h1>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import { caption } from '@default-scss-modules/caption'
 export default {
   data() {
     return {
-      captionClass: caption,
+      captionStyle: caption,
     }
   },
 }

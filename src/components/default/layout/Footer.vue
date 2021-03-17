@@ -1,6 +1,6 @@
 <template>
-  <footer :class="$style['footer']">
-    <div :class="$style['footer__copyright']">© 2021 Caelestis</div>
+  <footer :class="$style.footer">
+    <div :class="$style.footerCopyright">© 2021 Caelestis</div>
   </footer>
 </template>
 

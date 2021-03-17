@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style['layout']">
-    <h1 :class="$style['layout__title']">Админ-панель [В разработке]</h1>
+  <div :class="$style.layout">
+    <h1 :class="$style.layoutTitle">Админ-панель [В разработке]</h1>
   </div>
 </template>
 

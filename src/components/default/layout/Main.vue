@@ -1,12 +1,14 @@
 <template>
-  <main :class="$style['main']">
+  <main :class="$style.main">
     <router-view v-slot="{ Component }">
       <transition
         mode="out-in"
         enter-active-class="animate__animated animate__fadeIn animate__faster"
         leave-active-class="animate__animated animate__fadeOut animate__faster"
       >
-        <component :is="Component" />
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
       </transition>
     </router-view>
   </main>

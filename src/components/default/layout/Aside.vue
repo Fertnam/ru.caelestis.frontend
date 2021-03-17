@@ -1,5 +1,5 @@
 <template>
-  <aside :class="$style['aside']"></aside>
+  <aside :class="$style.aside"></aside>
 </template>
 
 <style lang="scss" module>

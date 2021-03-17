@@ -1,8 +1,8 @@
 <template>
-  <nav :class="$style['navigation']">
+  <nav :class="$style.navigation">
     <Menu />
     <router-link
-      :class="$style['navigation__registration-link']"
+      :class="$style.navigationRegistrationLink"
       :to="{ name: 'default.registration' }"
       exact-active-class=""
       active-class=""

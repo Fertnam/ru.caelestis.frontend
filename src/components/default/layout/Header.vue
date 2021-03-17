@@ -1,9 +1,9 @@
 <template>
-  <header :class="$style['header']">
+  <header :class="$style.header">
     <router-link v-slot="{ navigate }" :to="{ name: 'default.index' }" custom>
-      <div :class="$style['header__logo']" @click="navigate">
+      <div :class="$style.headerLogo" @click="navigate">
         <img
-          :class="$style['header__logo-image']"
+          :class="$style.headerLogoImage"
           src="/images/global/logo.png"
           alt="Логотип"
           draggable="false"

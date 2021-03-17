@@ -1,11 +1,11 @@
 <template>
-  <div :class="$style['layout']">
-    <div :class="$style['layout__container']">
-      <TheHeader :class="$style['layout__header']" />
-      <TheNavigation :class="$style['layout__navigation']" />
-      <TheMain :class="$style['layout__main']" />
-      <TheAside :class="$style['layout__aside']" />
-      <TheFooter :class="$style['layout__footer']" />
+  <div :class="$style.layout">
+    <div :class="$style.layoutContainer">
+      <TheHeader :class="$style.layoutHeader" />
+      <TheNavigation :class="$style.layoutNavigation" />
+      <TheMain :class="$style.layoutMain" />
+      <TheAside :class="$style.layoutAside" />
+      <TheFooter :class="$style.layoutFooter" />
     </div>
   </div>
 </template>

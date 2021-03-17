@@ -6,6 +6,17 @@ import {
   faDonate,
   faClipboardList,
   faGamepad,
+  faExclamationCircle,
+  faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faHome, faComments, faScroll, faDonate, faClipboardList, faGamepad)
+library.add(
+  faHome,
+  faComments,
+  faScroll,
+  faDonate,
+  faClipboardList,
+  faGamepad,
+  faExclamationCircle,
+  faCheckCircle
+)

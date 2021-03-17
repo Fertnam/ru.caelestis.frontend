@@ -1,0 +1,109 @@
+/* Базовые стили для всех элементов форм */
+%form-item {
+  display: inline-block;
+  width: 100%;
+
+  font-weight: bold;
+}
+
+/* Стили для элементов форм со значением aside модификатора theme */
+%aside-form-item {
+  padding: 8px;
+  text-align: center;
+}
+
+/* Размер обводки для элементов формы с темой main */
+$main-form-item-border-size: 2.5px;
+
+/* Стили для элементов форм со значением main модификатора theme */
+%main-form-item {
+  padding: 10px;
+  border: $main-form-item-border-size solid $light-blue-v1;
+}
+
+.form {
+  &__input {
+    @include placeholder($dark-blue-v2);
+  }
+
+  &__input, &__button {
+    @include light-theme($light-blue-v1);
+  }
+
+  &__input, &__button, &__label, &__message {
+    @extend %form-item;
+  }
+
+  &--theme_main {
+    .form__item {
+      margin-bottom: 30px;
+    }
+
+    .form__input {
+      @extend %main-form-item;
+
+      margin-top: 5px;
+      transition: border $transition-duration;
+
+      &:focus {
+        border: $main-form-item-border-size solid $dark-blue-v1;
+      }
+    }
+
+    .form__message {
+      margin-top: 15px;
+
+      &--theme_error {
+        color: $red;
+      }
+
+      &-icon {
+        margin-right: 2px;
+        font-size: 1.1em;
+      }
+    }
+
+    .form__button {
+      @extend %main-form-item;
+
+      text-transform: uppercase;
+      transition: border $transition-duration, background-color $transition-duration;
+
+      &:hover {
+        background-color: $yellow;
+        border: $main-form-item-border-size solid $dark-blue-v1;
+      }
+    }
+  }
+
+  &--theme_aside {
+    .form__input {
+      @extend %aside-form-item;
+
+      margin-bottom: 20px;
+    }
+
+    .form__message {
+      margin-bottom: 5px;
+
+      color: $red;
+      text-align: center;
+    }
+
+    .form__button {
+      /* Размер тени для кнопки */
+      $box-shadow-size: 4.5px;
+
+      @include box-shadow($box-shadow-size, $dark-blue-v1);
+      @extend %aside-form-item;
+
+      margin-top: 15px;
+      transition: box-shadow $transition-duration, background-color $transition-duration;
+
+      &:hover {
+        @include box-shadow($box-shadow-size, $dark-yellow);
+        background-color: $yellow;
+      }
+    }
+  }
+}

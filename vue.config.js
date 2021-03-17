@@ -33,6 +33,7 @@ module.exports = {
         additionalData: '@import "@scss-utils";',
       },
       css: {
+        localsConvention: 'camelCase',
         modules: {
           localIdentName: '[hash:base64:8]',
           auto: (file) => {

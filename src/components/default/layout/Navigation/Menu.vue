@@ -1,46 +1,46 @@
 <template>
-  <ul :class="$style['menu']">
+  <ul :class="$style.menu">
     <li
       v-for="(menuItem, menuItemIndex) in menu"
       :key="menuItemIndex"
-      :class="$style['menu__item']"
+      :class="$style.menuItem"
     >
       <router-link
         v-if="menuItem.to"
-        :class="$style['menu__link']"
+        :class="$style.menuLink"
         :to="menuItem.to"
-        :exact-active-class="$style['menu__link--active']"
+        :exact-active-class="$style.menuLinkActive"
         active-class=""
         exact
       >
-        <fa-icon :class="$style['menu__link-icon']" :icon="menuItem.icon" />
+        <fa-icon :class="$style.menuLinkIcon" :icon="menuItem.icon" />
         {{ menuItem.name }}
       </router-link>
 
       <a
         v-else-if="menuItem.href"
-        :class="$style['menu__link']"
+        :class="$style.menuLink"
         :href="menuItem.href"
       >
-        <fa-icon :class="$style['menu__link-icon']" :icon="menuItem.icon" />
+        <fa-icon :class="$style.menuLinkIcon" :icon="menuItem.icon" />
         {{ menuItem.name }}
       </a>
 
       <template v-else>
-        <div :class="$style['menu__link']">
-          <fa-icon :class="$style['menu__link-icon']" :icon="menuItem.icon" />
+        <div :class="$style.menuLink">
+          <fa-icon :class="$style.menuLinkIcon" :icon="menuItem.icon" />
           {{ menuItem.name }}
         </div>
-        <ul :class="$style['menu__submenu']">
+        <ul :class="$style.menuSubmenu">
           <li
             v-for="(submenuItem, submenuItemIndex) in menuItem.submenu"
             :key="submenuItemIndex"
-            :class="$style['menu__submenu-item']"
+            :class="$style.menuSubmenuItem"
           >
             <router-link
-              :class="$style['menu__submenu-link']"
+              :class="$style.menuSubmenuLink"
               :to="submenuItem.to"
-              :exact-active-class="$style['menu__submenu-link--active']"
+              :exact-active-class="$style.menuSubmenuLinkActive"
               active-class=""
               exact
             >

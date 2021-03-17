@@ -5,21 +5,21 @@ import DefaultLayout from '@layouts/default'
 import AdminLayout from '@layouts/admin'
 
 // Страницы
-import DefaultChildren from './default'
-import AdminChildren from './admin'
+import DefaultPages from './default'
+import AdminPages from './admin'
 
 const routes = [
   {
     path: '/',
     name: 'default',
     component: DefaultLayout,
-    children: DefaultChildren,
+    children: DefaultPages,
   },
   {
     path: '/admin',
     name: 'admin',
     component: AdminLayout,
-    children: AdminChildren,
+    children: AdminPages,
   },
 ]
 
