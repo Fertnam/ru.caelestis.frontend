@@ -2,6 +2,11 @@ let path = require('path')
 
 module.exports = {
   configureWebpack: {
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+      },
+    },
     resolve: {
       extensions: ['.vue', '.js', 'json', '.scss', '.module.scss'],
       alias: {
