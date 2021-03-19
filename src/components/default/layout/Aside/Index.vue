@@ -16,8 +16,7 @@ export default {
 
 <style lang="scss" module>
 .aside {
-  @include light-theme($light-blue-v1);
-
   padding: $base-padding-of-area-for-default-layout;
+  composes: light-theme--v_1 from '~@default-scss-modules/theme';
 }
 </style>

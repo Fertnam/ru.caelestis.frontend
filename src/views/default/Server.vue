@@ -5,16 +5,27 @@
 </template>
 
 <script>
-import { caption } from '@default-scss-modules/caption'
+import { caption as captionStyle } from '@default-scss-modules/caption'
 
 export default {
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.updateCaption(to.params.name, to.params.version)
+    })
+  },
+  beforeRouteUpdate(to) {
+    this.updateCaption(to.params.name, to.params.version)
+  },
   data() {
     return {
-      captionStyle: caption,
+      caption: '',
+      captionStyle,
     }
   },
-  created() {
-    this.caption = `${this.$route.params.name} ${this.$route.params.version}`
+  methods: {
+    updateCaption(serverName, serverVersion) {
+      this.caption = `${serverName} ${serverVersion}`
+    },
   },
 }
 </script>

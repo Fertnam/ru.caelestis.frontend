@@ -56,14 +56,14 @@
 </template>
 
 <script>
-import { caption } from '@default-scss-modules/caption'
-import form from '@default-scss-modules/form'
+import { caption as captionStyle } from '@default-scss-modules/caption'
+import formStyles from '@default-scss-modules/form'
 
 export default {
   data() {
     return {
-      captionStyle: caption,
-      formStyles: form,
+      captionStyle,
+      formStyles,
     }
   },
   methods: {

@@ -16,8 +16,7 @@
 
 <style lang="scss" module>
 .main {
-  @include light-theme($light-blue-v2);
-
   padding: $base-padding-of-area-for-default-layout;
+  composes: light-theme--v_2 from '~@default-scss-modules/theme';
 }
 </style>

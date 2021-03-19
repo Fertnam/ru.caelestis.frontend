@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import { caption } from '@default-scss-modules/caption'
+import { caption as captionStyle } from '@default-scss-modules/caption'
 
 export default {
   data() {
     return {
-      captionStyle: caption,
+      captionStyle,
     }
   },
 }

@@ -30,6 +30,18 @@ export default {
 
 <style lang="scss" module>
 .layout {
+  /* Цвета */
+  --blue: #878cb0;
+  --light-blue-v1: #9fa1b3;
+  --light-blue-v2: #c6c9de;
+  --dark-blue-v1: #5f627d;
+  --dark-blue-v2: #101121;
+  --dark-blue-v3: #0c0d1a;
+  --yellow: #fff9cc;
+  --dark-yellow: #99957a;
+  --red: #c45252;
+  --dark-red: #c22727;
+
   background-image: url('/images/default/layout-bg.png');
   background-position: bottom center;
   background-repeat: no-repeat;

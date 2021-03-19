@@ -6,9 +6,8 @@
 
 <style lang="scss" module>
 .footer {
-  @include dark-theme;
-
   padding: 40px $base-padding-of-area-for-default-layout;
+  composes: dark-theme from '~@default-scss-modules/theme';
 
   &__copyright {
     text-align: center;

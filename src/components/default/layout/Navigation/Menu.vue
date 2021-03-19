@@ -68,12 +68,12 @@ export default {
 <style lang="scss" module>
 //Стили для активных пунктов меню и подменю
 %active {
-  color: $yellow;
+  color: var(--yellow);
 }
 
 //Transition для анимации смены состояния пунктов меню
 %transition-for-menu-links {
-  transition: color $transition-duration;
+  transition: color var(--transition-duration);
 }
 
 .menu {
@@ -123,7 +123,7 @@ export default {
     $submenu-mark-size: 10px;
     $shadow-size: 5px;
 
-    @include dark-theme-with-box-shadow($shadow-size, $dark-blue-v3);
+    @include box-shadow($shadow-size, var(--dark-blue-v3));
 
     position: absolute;
     top: calc(100% + #{$submenu-mark-size});
@@ -143,8 +143,11 @@ export default {
 
     transform: translateX(calc(50% + #{$shadow-size}));
 
-    transition: opacity $transition-duration, visibility $transition-duration;
+    transition: opacity var(--transition-duration),
+      visibility var(--transition-duration);
     transition-delay: 150ms;
+
+    composes: dark-theme from '~@default-scss-modules/theme';
 
     &:before {
       position: absolute;
@@ -152,7 +155,7 @@ export default {
       right: 50%;
 
       border: $submenu-mark-size solid transparent;
-      border-bottom: $submenu-mark-size solid $dark-blue-v3;
+      border-bottom: $submenu-mark-size solid var(--dark-blue-v3);
 
       transform: translateX(50%);
 

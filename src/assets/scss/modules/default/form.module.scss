@@ -18,16 +18,16 @@ $main-form-item-border-size: 2.5px;
 /* Стили для элементов форм со значением main модификатора theme */
 %main-form-item {
   padding: 10px;
-  border: $main-form-item-border-size solid $light-blue-v1;
+  border: $main-form-item-border-size solid var(--light-blue-v1);
 }
 
 .form {
   &__input {
-    @include placeholder($dark-blue-v2);
+    @include placeholder(var(--dark-blue-v2));
   }
 
   &__input, &__button {
-    @include light-theme($light-blue-v1);
+    composes: light-theme--v_1 from '~@default-scss-modules/theme';
   }
 
   &__input, &__button, &__label, &__message {
@@ -43,10 +43,10 @@ $main-form-item-border-size: 2.5px;
       @extend %main-form-item;
 
       margin-top: 5px;
-      transition: border $transition-duration;
+      transition: border var(--transition-duration);
 
       &:focus {
-        border: $main-form-item-border-size solid $dark-blue-v1;
+        border: $main-form-item-border-size solid var(--dark-blue-v1);
       }
     }
 
@@ -54,7 +54,7 @@ $main-form-item-border-size: 2.5px;
       margin-top: 15px;
 
       &--theme_error {
-        color: $red;
+        color: var(--red);
       }
 
       &-icon {
@@ -67,11 +67,11 @@ $main-form-item-border-size: 2.5px;
       @extend %main-form-item;
 
       text-transform: uppercase;
-      transition: border $transition-duration, background-color $transition-duration;
+      transition: border var(--transition-duration), background-color var(--transition-duration);
 
       &:hover {
-        background-color: $yellow;
-        border: $main-form-item-border-size solid $dark-blue-v1;
+        background-color: var(--yellow);
+        border: $main-form-item-border-size solid var(--dark-blue-v1);
       }
     }
   }
@@ -79,14 +79,13 @@ $main-form-item-border-size: 2.5px;
   &--theme_aside {
     .form__input {
       @extend %aside-form-item;
-
       margin-bottom: 20px;
     }
 
     .form__message {
       margin-bottom: 5px;
 
-      color: $red;
+      color: var(--red);
       text-align: center;
     }
 
@@ -94,15 +93,15 @@ $main-form-item-border-size: 2.5px;
       /* Размер тени для кнопки */
       $box-shadow-size: 4.5px;
 
-      @include box-shadow($box-shadow-size, $dark-blue-v1);
+      @include box-shadow($box-shadow-size, var(--dark-blue-v1));
       @extend %aside-form-item;
 
       margin-top: 15px;
-      transition: box-shadow $transition-duration, background-color $transition-duration;
+      transition: box-shadow var(--transition-duration), background-color var(--transition-duration);
 
       &:hover {
-        @include box-shadow($box-shadow-size, $dark-yellow);
-        background-color: $yellow;
+        @include box-shadow($box-shadow-size, var(--dark-yellow));
+        background-color: var(--yellow);
       }
     }
   }

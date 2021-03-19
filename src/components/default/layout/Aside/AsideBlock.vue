@@ -10,9 +10,10 @@
 
 <style lang="scss" module>
 .aside__block {
-  @include dark_theme-with-box-shadow(5px, $dark-blue-v3);
+  @include box-shadow(5px, var(--dark-blue-v3));
 
   padding: 20px;
+  composes: dark-theme from '~@default-scss-modules/theme';
 
   &-caption {
     margin: 0;
