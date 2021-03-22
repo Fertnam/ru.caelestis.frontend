@@ -29,6 +29,9 @@ export default {
   justify-content: space-between;
   align-items: center;
 
+  border-bottom: $navigation-border-bottom-size-of-default-layout solid
+    var(--dark-blue-v3);
+
   composes: dark-theme from '~@default-scss-modules/theme';
 
   &__menu {

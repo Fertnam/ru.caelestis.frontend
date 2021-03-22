@@ -24,7 +24,7 @@
 
 <script>
 import AsideBlock from '@default-components/layout/Aside/AsideBlock'
-import form from '@default-scss-modules/form'
+import formStyles from '@default-scss-modules/form'
 
 export default {
   components: {
@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      formStyles: form,
+      formStyles,
     }
   },
   methods: {

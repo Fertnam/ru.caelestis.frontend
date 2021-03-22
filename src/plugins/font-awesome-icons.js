@@ -8,6 +8,11 @@ import {
   faGamepad,
   faExclamationCircle,
   faCheckCircle,
+  faCogs,
+  faDice,
+  faCommentDots,
+  faCrown,
+  faEllipsisH,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -18,5 +23,10 @@ library.add(
   faClipboardList,
   faGamepad,
   faExclamationCircle,
-  faCheckCircle
+  faCheckCircle,
+  faCogs,
+  faDice,
+  faCommentDots,
+  faCrown,
+  faEllipsisH
 )

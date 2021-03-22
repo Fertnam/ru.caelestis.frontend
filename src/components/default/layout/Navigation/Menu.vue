@@ -126,7 +126,10 @@ export default {
     @include box-shadow($shadow-size, var(--dark-blue-v3));
 
     position: absolute;
-    top: calc(100% + #{$submenu-mark-size});
+    top: calc(
+      100% + #{$submenu-mark-size +
+        $navigation-border-bottom-size-of-default-layout}
+    );
     right: 50%;
 
     z-index: 50;

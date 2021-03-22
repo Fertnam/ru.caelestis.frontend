@@ -70,11 +70,6 @@ export default {
 
   &__navigation {
     grid-area: navigation;
-
-    position: sticky;
-    top: 0;
-
-    z-index: 100;
   }
 
   &__main {
