@@ -1,12 +1,10 @@
 <template>
   <div :class="$style.layout">
-    <div :class="$style.layoutContainer">
-      <TheHeader :class="$style.layoutHeader" />
-      <TheNavigation :class="$style.layoutNavigation" />
-      <TheMain :class="$style.layoutMain" />
-      <TheAside :class="$style.layoutAside" />
-      <TheFooter :class="$style.layoutFooter" />
-    </div>
+    <TheHeader :class="$style.layoutHeader" />
+    <TheNavigation :class="$style.layoutNavigation" />
+    <TheMain :class="$style.layoutMain" />
+    <TheAside :class="$style.layoutAside" />
+    <TheFooter :class="$style.layoutFooter" />
   </div>
 </template>
 
@@ -42,26 +40,33 @@ export default {
   --red: #c45252;
   --dark-red: #c22727;
 
-  background-image: url('/images/default/layout-bg.png');
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  display: grid;
+  grid-auto-columns: 1fr $aside-width-of-default-layout;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    'header header'
+    'navigation navigation'
+    'main aside'
+    'footer footer';
 
   composes: layout from '~@global-scss-modules/layout';
+  composes: container from '~@global-scss-modules/container';
 
-  &__container {
-    display: grid;
-    grid-auto-columns: 1fr $aside-width-of-default-layout;
-    grid-template-rows: auto auto 1fr auto;
-    grid-template-areas:
-      'header header'
-      'navigation navigation'
-      'main aside'
-      'footer footer';
+  &:before {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
-    min-height: 100vh;
+    z-index: -1;
 
-    composes: container from '~@global-scss-modules/container';
+    background-image: url('/images/default/layout.png');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    content: '';
   }
 
   &__header {

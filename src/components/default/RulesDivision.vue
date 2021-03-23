@@ -47,6 +47,9 @@ export default {
   }
 
   &__caption {
+    position: sticky;
+    top: 0;
+
     margin: 0;
     padding: $padding;
 
@@ -56,12 +59,16 @@ export default {
     text-transform: uppercase;
     text-align: center;
 
+    user-select: none;
+
     composes: dark-theme from '~@default-scss-modules/theme';
 
     &-icon {
       margin-right: 4px;
+
       transition: transform var(--transition-duration),
         color var(--transition-duration);
+      will-change: transform;
     }
   }
 

@@ -2,11 +2,11 @@
   <div :class="$style.page">
     <h1 :class="[captionStyle, $style.pageCaption]">Правила</h1>
 
-    <div :class="$style.rules">
+    <div :class="$style.rulesDivisions">
       <RulesDivision
         v-for="(division, index) in rulesDivisions"
         :key="index"
-        :class="$style.rulesDivision"
+        :class="$style.rulesDivisionsItem"
         :division="division"
       />
     </div>
@@ -38,8 +38,8 @@ export default {
   }
 }
 
-.rules {
-  &__division:not(:last-child) {
+.rules-divisions {
+  &__item:not(:last-child) {
     margin-bottom: 30px;
   }
 }
