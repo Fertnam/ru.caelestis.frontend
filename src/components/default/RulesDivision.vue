@@ -38,20 +38,25 @@ export default {
 </script>
 
 <style lang="scss" module>
-.rules-division {
-  $padding: 14px;
+$padding: 14px;
 
+%padding {
+  padding: $padding;
+}
+
+.rules-division {
   &:hover .rules-division__caption-icon {
     color: var(--yellow);
     transform: scale(1.15);
   }
 
   &__caption {
+    @extend %padding;
+
     position: sticky;
     top: 0;
 
     margin: 0;
-    padding: $padding;
 
     font-size: 1em;
     font-weight: normal;
@@ -71,28 +76,28 @@ export default {
       will-change: transform;
     }
   }
+}
 
-  .clauses {
-    &__item {
-      padding: $padding;
+.clauses {
+  &__item {
+    @extend %padding;
 
-      &:nth-child(even) {
-        background-color: var(--light-blue-v1);
+    &:nth-child(even) {
+      background-color: var(--light-blue-v1);
+    }
+
+    &-info {
+      display: flex;
+
+      &-number {
+        margin-right: 7px;
+        font-weight: bold;
       }
+    }
 
-      &-info {
-        display: flex;
-
-        &-number {
-          margin-right: 7px;
-          font-weight: bold;
-        }
-      }
-
-      &-punishment {
-        margin-top: 10px;
-        color: var(--dark-red);
-      }
+    &-punishment {
+      margin-top: 10px;
+      color: var(--dark-red);
     }
   }
 }

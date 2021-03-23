@@ -1,16 +1,27 @@
 <template>
   <div :class="$style.page">
-    <h1 :class="captionStyle">Главная</h1>
+    <div :class="$style.articles">
+      <Article
+        v-for="(article, index) in articles"
+        :key="index"
+        :class="$style.articlesItem"
+        :article="article"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import { caption as captionStyle } from '@default-scss-modules/caption'
+import Article from '@default-components/Article'
+import articles from '@global-data/articles'
 
 export default {
+  components: {
+    Article,
+  },
   data() {
     return {
-      captionStyle,
+      articles,
     }
   },
 }
@@ -18,5 +29,11 @@ export default {
 
 <style lang="scss" module>
 .page {
+}
+
+.articles {
+  &__item:not(:last-child) {
+    margin-bottom: 30px;
+  }
 }
 </style>

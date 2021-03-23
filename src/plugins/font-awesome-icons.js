@@ -13,6 +13,7 @@ import {
   faCommentDots,
   faCrown,
   faEllipsisH,
+  faCalendarAlt,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -28,5 +29,6 @@ library.add(
   faDice,
   faCommentDots,
   faCrown,
-  faEllipsisH
+  faEllipsisH,
+  faCalendarAlt
 )
