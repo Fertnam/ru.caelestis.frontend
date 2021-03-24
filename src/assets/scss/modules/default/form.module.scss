@@ -46,6 +46,10 @@ $main-form-item-border-size: 2.5px;
     @include placeholder(var(--dark-blue-v2));
   }
 
+  &__button {
+    user-select: none;
+  }
+
   &__input, &__button {
     composes: light-theme--v_1 from '~@default-scss-modules/theme';
   }

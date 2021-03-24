@@ -32,6 +32,8 @@ export default {
   border-bottom: $navigation-border-bottom-size-of-default-layout solid
     var(--dark-blue-v3);
 
+  user-select: none;
+
   composes: dark-theme from '~@default-scss-modules/theme';
 
   &__menu {
