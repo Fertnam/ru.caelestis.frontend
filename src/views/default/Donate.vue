@@ -3,24 +3,24 @@
     <h1 :class="[captionStyle, $style.pageCaption]">Донат</h1>
 
     <div :class="$style.tables">
-      <DonateCapabilitiesTable :class="$style.tablesItem" />
-      <DonateKitsTable :class="$style.tablesItem" />
-      <DonatePricesTable :class="$style.tablesItem" />
+      <CapabilitiesTable :class="$style.tablesItem" />
+      <KitsTable :class="$style.tablesItem" />
+      <PricesTable :class="$style.tablesItem" />
     </div>
   </div>
 </template>
 
 <script>
-import DonateCapabilitiesTable from '@default-components/DonateCapabilitiesTable'
-import DonateKitsTable from '@default-components/DonateKitsTable'
-import DonatePricesTable from '@default-components/DonatePricesTable'
+import CapabilitiesTable from '@default-components/views/donate/CapabilitiesTable'
+import KitsTable from '@default-components/views/donate/KitsTable'
+import PricesTable from '@default-components/views/donate/PricesTable'
 import { caption as captionStyle } from '@default-scss-modules/caption'
 
 export default {
   components: {
-    DonateCapabilitiesTable,
-    DonateKitsTable,
-    DonatePricesTable,
+    CapabilitiesTable,
+    KitsTable,
+    PricesTable,
   },
   data() {
     return {

@@ -1,0 +1,35 @@
+<template>
+  <Table :captions="captions">
+    <tr>
+      <td>30 дней</td>
+      <td aria-label="Игрок">Бесплатно</td>
+      <td aria-label="VIP">599 руб</td>
+      <td aria-label="Gold">599 руб</td>
+      <td aria-label="Premium">599 руб</td>
+      <td aria-label="Niobium">599 руб</td>
+    </tr>
+    <tr>
+      <td>Навсегда</td>
+      <td aria-label="Игрок">Бесплатно</td>
+      <td aria-label="VIP">599 руб</td>
+      <td aria-label="Gold">599 руб</td>
+      <td aria-label="Premium">599 руб</td>
+      <td aria-label="Niobium">5999 руб</td>
+    </tr>
+  </Table>
+</template>
+
+<script>
+import Table from '@default-components/Table'
+
+export default {
+  components: {
+    Table,
+  },
+  data() {
+    return {
+      captions: ['Срок', 'Игрок', 'Vip', 'Gold', 'Premium', 'Niobium'],
+    }
+  },
+}
+</script>

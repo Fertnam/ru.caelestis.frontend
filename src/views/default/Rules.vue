@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import RulesDivision from '@default-components/RulesDivision'
+import RulesDivision from '@default-components/views/rules/RulesDivision'
 import rulesDivisions from '@global-data/rules'
 import { caption as captionStyle } from '@default-scss-modules/caption'
 
