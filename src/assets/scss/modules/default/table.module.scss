@@ -1,0 +1,29 @@
+.table {
+  width: 100%;
+  border-spacing: 0;
+
+  text-align: center;
+
+  thead {
+    text-transform: uppercase;
+    user-select: none;
+  }
+
+  &__th {
+    position: sticky;
+    top: 0;
+
+    composes: dark-theme from '~@default-scss-modules/theme';
+  }
+
+  td, th {
+    padding: 14px;
+    font-weight: normal;
+  }
+
+  tr {
+    &:nth-child(even) {
+      background-color: var(--light-blue-v1);
+    }
+  }
+}
