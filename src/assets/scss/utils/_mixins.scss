@@ -15,3 +15,16 @@
     opacity: $opacity;
   }
 }
+
+/* Медиа-запросы */
+@mixin _1200 {
+  @media (max-width: 1200px){
+    @content;
+  }
+}
+
+@mixin _812 {
+  @media (max-width: 812px){
+    @content;
+  }
+}

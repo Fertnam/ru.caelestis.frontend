@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.layout">
+  <div :class="[$style.layout, containerStyle]">
     <TheHeader :class="$style.layoutHeader" />
     <TheNavigation :class="$style.layoutNavigation" />
     <TheMain :class="$style.layoutMain" />
@@ -14,6 +14,7 @@ import TheNavigation from '@default-components/layout/Navigation/Index'
 import TheMain from '@default-components/layout/Main'
 import TheAside from '@default-components/layout/Aside/Index'
 import TheFooter from '@default-components/layout/Footer'
+import { container as containerStyle } from '@global-scss-modules/container'
 
 export default {
   components: {
@@ -22,6 +23,11 @@ export default {
     TheMain,
     TheAside,
     TheFooter,
+  },
+  data() {
+    return {
+      containerStyle,
+    }
   },
 }
 </script>
@@ -50,7 +56,15 @@ export default {
     'footer footer';
 
   composes: layout from '~@global-scss-modules/layout';
-  composes: container from '~@global-scss-modules/container';
+
+  @include _812 {
+    grid-template-areas:
+      'header header'
+      'navigation navigation'
+      'aside aside'
+      'main main'
+      'footer footer';
+  }
 
   &:before {
     position: fixed;

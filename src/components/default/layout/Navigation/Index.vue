@@ -32,9 +32,16 @@ export default {
   border-bottom: $navigation-border-bottom-size-of-default-layout solid
     var(--dark-blue-v3);
 
+  white-space: nowrap;
+
   user-select: none;
 
   composes: dark-theme from '~@default-scss-modules/theme';
+
+  @include _1200 {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 
   &__menu {
     margin-left: $base-padding-of-area-for-default-layout;
@@ -59,6 +66,11 @@ export default {
     text-align: center;
 
     composes: light-theme from '~@default-scss-modules/theme';
+
+    @include _1200 {
+      margin-left: $base-padding-of-area-for-default-layout + $shadow-size;
+      width: auto;
+    }
   }
 }
 </style>

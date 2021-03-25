@@ -17,6 +17,10 @@
 .header {
   padding: 80px;
 
+  @include _812 {
+    padding: 30px;
+  }
+
   &__logo {
     width: 250px;
     height: 60px;
@@ -28,6 +32,10 @@
     cursor: pointer;
 
     animation: pulse 2s infinite ease-in-out;
+
+    @include _812 {
+      width: 200px;
+    }
 
     &-image {
       width: 100%;
