@@ -7,6 +7,10 @@
   thead {
     text-transform: uppercase;
     user-select: none;
+
+    @include _812 {
+      display: none;
+    }
   }
 
   &__th {
@@ -24,6 +28,43 @@
   tr {
     &:nth-child(even) {
       background-color: var(--light-blue-v1);
+    }
+  }
+
+  @include _812 {
+    tr {
+      background-color: transparent !important;
+
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+
+      td:first-of-type {
+        position: sticky;
+        top: 0;
+
+        color: var(--blue);
+        background-color: var(--dark-blue-v2);
+
+        text-align: center;
+      }
+    }
+
+    td {
+      text-align: right;
+
+      &:before {
+        content: attr(aria-label);
+        float: left;
+      }
+
+      &:nth-child(odd) {
+        background-color: var(--light-blue-v1);
+      }
+    }
+
+    tr, td {
+      display: block;
     }
   }
 }
