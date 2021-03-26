@@ -42,7 +42,6 @@ module.exports = {
       css: {
         localsConvention: 'camelCase',
         importLoaders: 3,
-        sourceMap: true,
         modules: {
           localIdentName: '[hash:base64:8]',
           auto: (file) => {
