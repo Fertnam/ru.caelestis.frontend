@@ -25,12 +25,14 @@ export default {
 
 <style lang="scss" module>
 .navigation {
+  /* Размер нижней рамки */
+  --navigation-border-bottom-size: 5px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  border-bottom: $navigation-border-bottom-size-of-default-layout solid
-    var(--dark-blue-v3);
+  border-bottom: var(--navigation-border-bottom-size) solid var(--dark-blue-v3);
 
   white-space: nowrap;
 
@@ -44,32 +46,36 @@ export default {
   }
 
   &__menu {
-    margin-left: $base-padding-of-area-for-default-layout;
+    margin-left: var(--base-padding-of-area);
   }
 
   &__registration-link {
     $shadow-size: 5px;
-    $fallibility: $base-padding-of-area-for-default-layout * 2;
+    $fallibility: calc(var(--base-padding-of-area) * 2);
 
     @include box-shadow($shadow-size, var(--dark-blue-v1));
 
     margin-top: -$shadow-size;
-    margin-right: $base-padding-of-area-for-default-layout;
+    margin-right: var(--base-padding-of-area);
 
     padding: 8px 30px;
 
-    width: calc(#{$aside-width-of-default-layout} - #{$fallibility});
+    width: calc(var(--aside-width) - #{$fallibility});
 
     font-size: 1.2em;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
 
-    composes: light-theme from '~@default-scss-modules/theme';
+    composes: light-theme light-theme--v_1 from '~@default-scss-modules/theme';
 
     @include _1200 {
-      margin-left: $base-padding-of-area-for-default-layout + $shadow-size;
+      margin-left: calc(var(--base-padding-of-area) + #{$shadow-size});
       width: auto;
+    }
+
+    @include _812 {
+      font-size: 1em;
     }
   }
 }

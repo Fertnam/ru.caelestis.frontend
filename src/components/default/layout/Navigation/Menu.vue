@@ -108,6 +108,10 @@ export default {
     padding: 25px 18px;
     text-transform: uppercase;
 
+    @include _812 {
+      padding: 20px 10px;
+    }
+
     &:hover,
     &--active {
       @extend %active;
@@ -127,8 +131,7 @@ export default {
 
     position: absolute;
     top: calc(
-      100% + #{$submenu-mark-size +
-        $navigation-border-bottom-size-of-default-layout}
+      100% + #{$submenu-mark-size} + var(--navigation-border-bottom-size)
     );
     right: 50%;
 

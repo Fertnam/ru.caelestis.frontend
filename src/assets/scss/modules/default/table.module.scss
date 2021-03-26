@@ -1,3 +1,13 @@
+/* Заголовок таблицы */
+@mixin caption {
+  @include dark-theme;
+
+  position: sticky;
+  top: 0;
+
+  user-select: none;
+}
+
 .table {
   width: 100%;
   border-spacing: 0;
@@ -5,19 +15,30 @@
   text-align: center;
 
   thead {
-    text-transform: uppercase;
-    user-select: none;
+    th {
+      @include caption;
+      text-transform: uppercase;
+    }
 
     @include _812 {
       display: none;
     }
   }
 
-  &__th {
-    position: sticky;
-    top: 0;
+  tr {
+    &:nth-child(even) {
+      background-color: var(--light-blue-v1);
 
-    composes: dark-theme from '~@default-scss-modules/theme';
+      @include _812 {
+        background-color: transparent;
+      }
+    }
+
+    @include _812 {
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+    }
   }
 
   td, th {
@@ -25,31 +46,7 @@
     font-weight: normal;
   }
 
-  tr {
-    &:nth-child(even) {
-      background-color: var(--light-blue-v1);
-    }
-  }
-
   @include _812 {
-    tr {
-      background-color: transparent !important;
-
-      &:not(:last-child) {
-        margin-bottom: 15px;
-      }
-
-      td:first-of-type {
-        position: sticky;
-        top: 0;
-
-        color: var(--blue);
-        background-color: var(--dark-blue-v2);
-
-        text-align: center;
-      }
-    }
-
     td {
       text-align: right;
 
@@ -60,6 +57,11 @@
 
       &:nth-child(odd) {
         background-color: var(--light-blue-v1);
+      }
+
+      &:first-of-type {
+        @include caption;
+        text-align: center;
       }
     }
 

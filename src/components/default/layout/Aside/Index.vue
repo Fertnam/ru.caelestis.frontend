@@ -16,7 +16,7 @@ export default {
 
 <style lang="scss" module>
 .aside {
-  padding: $base-padding-of-area-for-default-layout;
-  composes: light-theme--v_1 from '~@default-scss-modules/theme';
+  padding: var(--base-padding-of-area);
+  composes: light-theme light-theme--v_2 from '~@default-scss-modules/theme';
 }
 </style>

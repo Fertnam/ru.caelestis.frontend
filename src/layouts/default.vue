@@ -46,8 +46,14 @@ export default {
   --red: #c45252;
   --dark-red: #c22727;
 
+  /* Базовый размер padding для разделов (они помечены через grid-area) */
+  --base-padding-of-area: 30px;
+
+  /* Ширина раздела aside */
+  --aside-width: 31%;
+
   display: grid;
-  grid-auto-columns: 1fr $aside-width-of-default-layout;
+  grid-auto-columns: 1fr var(--aside-width);
   grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
     'header header'
@@ -58,6 +64,8 @@ export default {
   composes: layout from '~@global-scss-modules/layout';
 
   @include _812 {
+    --base-padding-of-area: 20px;
+
     grid-template-areas:
       'header header'
       'navigation navigation'

@@ -18,7 +18,7 @@
   padding: 80px;
 
   @include _812 {
-    padding: 30px;
+    padding: 60px 30px;
   }
 
   &__logo {

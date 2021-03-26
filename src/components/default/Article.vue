@@ -59,15 +59,29 @@ $section-margin-bottom: 20px;
 
     font-weight: bold;
 
-    composes: light-theme from '~@default-scss-modules/theme';
+    composes: light-theme light-theme--v_1 from '~@default-scss-modules/theme';
 
     &-caption {
       font-size: 1.35em;
+
+      @include _812 {
+        font-size: 1.1em;
+      }
     }
 
-    &-date-icon {
-      font-size: 1.2em;
-      margin-right: 2px;
+    &-date {
+      @include _812 {
+        font-size: 0.9em;
+      }
+
+      &-icon {
+        font-size: 1.2em;
+        margin-right: 2px;
+
+        @include _812 {
+          font-size: 1em;
+        }
+      }
     }
   }
 
@@ -75,17 +89,13 @@ $section-margin-bottom: 20px;
     @extend %section-margin-bottom;
 
     &-image {
+      @include proportional-content(40);
       @extend %section-margin-bottom;
-
-      height: 300px;
 
       user-select: none;
       pointer-events: none;
 
       &-source {
-        width: 100%;
-        height: 100%;
-
         object-fit: cover;
         object-position: center;
       }
@@ -111,6 +121,10 @@ $section-margin-bottom: 20px;
       user-select: none;
 
       composes: dark-theme from '~@default-scss-modules/theme';
+
+      @include _812 {
+        font-size: 0.9em;
+      }
     }
   }
 }

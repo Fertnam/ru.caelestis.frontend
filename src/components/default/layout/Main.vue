@@ -16,7 +16,7 @@
 
 <style lang="scss" module>
 .main {
-  padding: $base-padding-of-area-for-default-layout;
-  composes: light-theme--v_2 from '~@default-scss-modules/theme';
+  padding: var(--base-padding-of-area);
+  composes: light-theme light-theme--v_3 from '~@default-scss-modules/theme';
 }
 </style>

@@ -1,11 +1,10 @@
 <template>
-  <table :class="tableStyles.table">
+  <table :class="$style.table">
     <thead>
       <tr>
         <th
           v-for="(caption, index) in captions"
           :key="index"
-          :class="tableStyles.tableTh"
           v-text="caption"
         />
       </tr>
@@ -18,8 +17,6 @@
 </template>
 
 <script>
-import tableStyles from '@default-scss-modules/table'
-
 export default {
   props: {
     captions: {
@@ -27,10 +24,11 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      tableStyles,
-    }
-  },
 }
 </script>
+
+<style lang="scss" module>
+.table {
+  composes: table from '~@default-scss-modules/table';
+}
+</style>

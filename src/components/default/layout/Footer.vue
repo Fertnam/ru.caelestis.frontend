@@ -6,7 +6,7 @@
 
 <style lang="scss" module>
 .footer {
-  padding: 40px $base-padding-of-area-for-default-layout;
+  padding: 40px var(--base-padding-of-area);
   composes: dark-theme from '~@default-scss-modules/theme';
 
   &__copyright {
