@@ -1,26 +1,34 @@
 <template>
-  <div :class="$style.asideBlock">
-    <h2 v-if="$slots.caption" :class="$style.asideBlockCaption">
-      <slot name="caption" />
-    </h2>
+    <div :class="$style.asideBlock">
+        <h2 v-if="$slots.caption" :class="$style.asideBlockCaption">
+            <slot name="caption" />
+        </h2>
 
-    <slot />
-  </div>
+        <slot />
+    </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+    name: 'AsideBlock',
+})
+</script>
 
 <style lang="scss" module>
 .aside__block {
-  @include box-shadow(5px, var(--dark-blue-v3));
+    @include box-shadow(5px, var(--dark-blue-v3));
 
-  padding: 20px;
-  composes: dark-theme from '~@default-scss-modules/theme';
+    padding: 20px;
+    composes: dark-theme from '~@default-scss-modules/theme';
 
-  &-caption {
-    margin: 0;
-    padding-bottom: 20px;
+    &-caption {
+        margin: 0;
+        padding-bottom: 20px;
 
-    font-size: 1.25em;
-    text-align: center;
-  }
+        font-size: 1.25em;
+        text-align: center;
+    }
 }
 </style>

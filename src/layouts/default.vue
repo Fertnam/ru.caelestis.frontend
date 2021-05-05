@@ -1,114 +1,111 @@
 <template>
-  <div :class="[$style.layout, containerStyle]">
-    <TheHeader :class="$style.layoutHeader" />
-    <TheNavigation :class="$style.layoutNavigation" />
-    <TheMain :class="$style.layoutMain" />
-    <TheAside :class="$style.layoutAside" />
-    <TheFooter :class="$style.layoutFooter" />
-  </div>
+    <div :class="$style.layout">
+        <TheHeader :class="$style.layoutHeader" />
+        <TheNavigation :class="$style.layoutNavigation" />
+        <TheMain :class="$style.layoutMain" />
+        <TheAside :class="$style.layoutAside" />
+        <TheFooter :class="$style.layoutFooter" />
+    </div>
 </template>
 
-<script>
-import TheHeader from '@default-components/layout/Header'
-import TheNavigation from '@default-components/layout/Navigation/Index'
-import TheMain from '@default-components/layout/Main'
-import TheAside from '@default-components/layout/Aside/Index'
-import TheFooter from '@default-components/layout/Footer'
-import { container as containerStyle } from '@global-scss-modules/container'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import TheHeader from '@default-components/layout/Header.vue'
+import TheNavigation from '@default-components/layout/Navigation/Index.vue'
+import TheMain from '@default-components/layout/Main.vue'
+import TheAside from '@default-components/layout/Aside/Index.vue'
+import TheFooter from '@default-components/layout/Footer.vue'
 
-export default {
-  components: {
-    TheHeader,
-    TheNavigation,
-    TheMain,
-    TheAside,
-    TheFooter,
-  },
-  data() {
-    return {
-      containerStyle,
-    }
-  },
-}
+export default defineComponent({
+    name: 'DefaultLayout',
+    components: {
+        TheHeader,
+        TheNavigation,
+        TheMain,
+        TheAside,
+        TheFooter,
+    },
+})
 </script>
 
 <style lang="scss" module>
 .layout {
-  /* Цвета */
-  --blue: #878cb0;
-  --light-blue-v1: #9fa1b3;
-  --light-blue-v2: #c6c9de;
-  --dark-blue-v1: #5f627d;
-  --dark-blue-v2: #101121;
-  --dark-blue-v3: #0c0d1a;
-  --yellow: #fff9cc;
-  --dark-yellow: #99957a;
-  --red: #c45252;
-  --dark-red: #c22727;
+    /* Цвета */
+    --blue: #878cb0;
+    --light-blue-v1: #9fa1b3;
+    --light-blue-v2: #c6c9de;
+    --dark-blue-v1: #5f627d;
+    --dark-blue-v2: #101121;
+    --dark-blue-v3: #0c0d1a;
+    --yellow: #fff9cc;
+    --dark-yellow: #99957a;
+    --red: #c45252;
+    --dark-red: #c22727;
 
-  /* Базовый размер padding для разделов (они помечены через grid-area) */
-  --base-padding-of-area: 30px;
+    /* Базовый размер padding для разделов (они помечены через grid-area) */
+    --base-padding-of-area: 30px;
 
-  /* Ширина раздела aside */
-  --aside-width: 31%;
+    /* Ширина раздела aside */
+    --aside-width: 30%;
 
-  display: grid;
-  grid-auto-columns: 1fr var(--aside-width);
-  grid-template-rows: auto auto 1fr auto;
-  grid-template-areas:
-    'header header'
-    'navigation navigation'
-    'main aside'
-    'footer footer';
-
-  composes: layout from '~@global-scss-modules/layout';
-
-  @include _812 {
-    --base-padding-of-area: 20px;
-
+    display: grid;
+    grid-auto-columns: 1fr var(--aside-width);
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
-      'header header'
-      'navigation navigation'
-      'aside aside'
-      'main main'
-      'footer footer';
-  }
+        'header header'
+        'navigation navigation'
+        'main aside'
+        'footer footer';
 
-  &:before {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    composes: layout from '~@global-scss-modules/layout';
+    composes: container from '~@global-scss-modules/container';
 
-    z-index: -1;
+    @include _812 {
+        --base-padding-of-area: 20px;
 
-    background-image: url('/images/default/layout.png');
-    background-position: bottom center;
-    background-repeat: no-repeat;
-    background-size: cover;
+        grid-template-areas:
+            'header header'
+            'navigation navigation'
+            'aside aside'
+            'main main'
+            'footer footer';
+    }
 
-    content: '';
-  }
+    &:before {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
 
-  &__header {
-    grid-area: header;
-  }
+        z-index: -1;
 
-  &__navigation {
-    grid-area: navigation;
-  }
+        background-image: url('/images/default/layout.png');
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: cover;
 
-  &__main {
-    grid-area: main;
-  }
+        content: '';
+    }
 
-  &__aside {
-    grid-area: aside;
-  }
+    &__header {
+        grid-area: header;
+    }
 
-  &__footer {
-    grid-area: footer;
-  }
+    &__navigation {
+        grid-area: navigation;
+    }
+
+    &__main {
+        grid-area: main;
+    }
+
+    &__aside {
+        grid-area: aside;
+    }
+
+    &__footer {
+        grid-area: footer;
+    }
 }
 </style>

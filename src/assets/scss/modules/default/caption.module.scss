@@ -1,12 +1,12 @@
 .caption {
-  @include box-shadow(5px, var(--dark-blue-v1));
+    @include box-shadow(5px, var(--dark-blue-v1));
 
-  margin: 0;
-  padding: 14px;
+    margin: 0;
+    padding: 14px;
 
-  font-size: 1.4em;
+    font-size: 1.4em;
 
-  user-select: none;
+    user-select: none;
 
-  composes: light-theme light-theme--v_1 from '~@default-scss-modules/theme';
+    composes: light-theme light-theme--v_1 from '~@default-scss-modules/theme';
 }

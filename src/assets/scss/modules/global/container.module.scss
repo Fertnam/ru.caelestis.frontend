@@ -1,8 +1,8 @@
 .container {
-  margin: 0 auto;
-  width: 1200px;
+    margin: 0 auto;
+    width: 1200px;
 
-  @include _1200 {
-    width: 100%;
-  }
+    @include _1200 {
+        width: 100%;
+    }
 }

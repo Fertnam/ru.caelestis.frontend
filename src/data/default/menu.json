@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Главная",
+        "to": {
+            "name": "default.index"
+        },
+        "icon": "home"
+    },
+    {
+        "name": "Форум",
+        "href": "/forum",
+        "icon": "comments"
+    },
+    {
+        "name": "Сервера",
+        "icon": "gamepad",
+        "submenu": [
+            {
+                "name": "Classic 1.16.4",
+                "to": {
+                    "name": "default.server",
+                    "params": {
+                        "name": "Classic",
+                        "version": "1.16.4"
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "name": "Бан-лист",
+        "to": {
+            "name": "default.banlist"
+        },
+        "icon": "scroll"
+    },
+    {
+        "name": "Донат",
+        "to": {
+            "name": "default.donate"
+        },
+        "icon": "donate"
+    },
+    {
+        "name": "Правила",
+        "to": {
+            "name": "default.rules"
+        },
+        "icon": "clipboard-list"
+    }
+]

@@ -1,55 +1,55 @@
 /* Темная тема для блоков */
 @mixin dark-theme {
-  color: var(--blue);
-  background-color: var(--dark-blue-v2);
+    color: var(--blue);
+    background-color: var(--dark-blue-v2);
 }
 
 /* Светлая тема для блоков */
 @mixin light-theme($background: var(--blue)) {
-  color: var(--dark-blue-v2);
-  background-color: $background;
+    color: var(--dark-blue-v2);
+    background-color: $background;
 }
 
 /* Дизайнерская тень */
 @mixin box-shadow($size, $color) {
-  box-shadow: -#{$size} $size $color;
+    box-shadow: -#{$size} $size $color;
 }
 
 /* Обеспечить пропорциональный размер контента на всех экранах (задавать только в процентах!!!) */
 @mixin proportional-content($size) {
-  position: relative;
-  padding-bottom: $size * 1%;
+    position: relative;
+    padding-bottom: $size * 1%;
 
-  &-source {
-    position: absolute;
+    &-source {
+        position: absolute;
 
-    width: 100%;
-    height: 100%;
-  }
+        width: 100%;
+        height: 100%;
+    }
 }
 
 /* Плейсхолдеры для инпутов */
 @mixin placeholder($color, $opacity: 1) {
-  &::placeholder {
-    color: $color;
-    opacity: $opacity;
-  }
+    &::placeholder {
+        color: $color;
+        opacity: $opacity;
+    }
 
-  &:-ms-input-placeholder {
-    color: $color;
-    opacity: $opacity;
-  }
+    &:-ms-input-placeholder {
+        color: $color;
+        opacity: $opacity;
+    }
 }
 
 /* Медиа-запросы */
 @mixin _1200 {
-  @media (max-width: 1200px){
-    @content;
-  }
+    @media (max-width: 1200px) {
+        @content;
+    }
 }
 
 @mixin _812 {
-  @media (max-width: 812px){
-    @content;
-  }
+    @media (max-width: 812px) {
+        @content;
+    }
 }

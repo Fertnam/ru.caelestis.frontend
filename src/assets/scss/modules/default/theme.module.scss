@@ -1,19 +1,19 @@
 .dark-theme {
-  @include dark-theme;
+    @include dark-theme;
 }
 
 .light-theme {
-  color: var(--dark-blue-v2);
+    color: var(--dark-blue-v2);
 
-  &--v_1 {
-    background-color: var(--blue);
-  }
+    &--v_1 {
+        background-color: var(--blue);
+    }
 
-  &--v_2 {
-    background-color: var(--light-blue-v1);
-  }
+    &--v_2 {
+        background-color: var(--light-blue-v1);
+    }
 
-  &--v_3 {
-    background-color: var(--light-blue-v2);
-  }
+    &--v_3 {
+        background-color: var(--light-blue-v2);
+    }
 }

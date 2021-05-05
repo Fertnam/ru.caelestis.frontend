@@ -1,13 +1,15 @@
 <template>
-  <Icon src="forbid.png" alt="Запрещено" />
+    <Icon src="forbid.png" alt="Запрещено" />
 </template>
 
-<script>
-import Icon from '@default-components/icons/Icon'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import Icon from '@default-components/icons/Icon.vue'
 
-export default {
-  components: {
-    Icon,
-  },
-}
+export default defineComponent({
+    name: 'IconForbid',
+    components: {
+        Icon,
+    },
+})
 </script>
