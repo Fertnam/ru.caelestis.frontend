@@ -5,7 +5,7 @@
         <template #default>
             <form
                 :class="[formStyles.form, formStyles.formThemeAside]"
-                @submit.prevent="submit"
+                @submit.prevent="onSubmit"
             >
                 <input
                     :class="formStyles.formInput"
@@ -28,8 +28,8 @@
 
 <script>
 import { defineComponent } from 'vue'
-import AsideBlock from '@default-components/layout/Aside/AsideBlock.vue'
-import formStyles from '@default-scss-modules/form'
+import AsideBlock from '@default-components/layout/aside/Block.vue'
+import formStyles from '@default-scss-modules/form.module.scss'
 
 export default defineComponent({
     name: 'UserPanel',

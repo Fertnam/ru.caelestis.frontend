@@ -86,9 +86,6 @@ export default defineComponent({
 .menu {
     display: flex;
 
-    margin: 0;
-    padding: 0;
-
     &__item {
         position: relative;
         display: flex;
@@ -112,7 +109,7 @@ export default defineComponent({
     &__link {
         @extend %transition-for-menu-links;
 
-        padding: 25px 16px;
+        padding: 25px 14px;
         text-transform: uppercase;
 
         @include _812 {
@@ -143,8 +140,6 @@ export default defineComponent({
         right: 50%;
 
         z-index: 50;
-
-        padding: 0;
 
         opacity: 0;
         visibility: hidden;

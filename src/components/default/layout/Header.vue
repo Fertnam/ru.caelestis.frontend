@@ -27,10 +27,10 @@ export default defineComponent({
 
 <style lang="scss" module>
 .header {
-    padding: 80px;
+    padding: 60px;
 
     @include _812 {
-        padding: 60px 30px;
+        padding: 40px;
     }
 
     &__logo {

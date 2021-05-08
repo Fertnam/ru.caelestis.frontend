@@ -6,7 +6,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import UserPanel from '@default-components/layout/Aside/UserPanel.vue'
+import UserPanel from '@default-components/layout/aside/blocks/UserPanel.vue'
 
 export default defineComponent({
     name: 'Aside',

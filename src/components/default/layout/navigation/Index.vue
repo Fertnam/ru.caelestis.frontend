@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Menu from '@default-components/layout/Navigation/Menu.vue'
+import Menu from '@default-components/layout/navigation/Menu.vue'
 
 export default defineComponent({
     name: 'Navigation',

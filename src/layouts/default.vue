@@ -11,9 +11,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import TheHeader from '@default-components/layout/Header.vue'
-import TheNavigation from '@default-components/layout/Navigation/Index.vue'
+import TheNavigation from '@default-components/layout/navigation/Index.vue'
 import TheMain from '@default-components/layout/Main.vue'
-import TheAside from '@default-components/layout/Aside/Index.vue'
+import TheAside from '@default-components/layout/aside/Index.vue'
 import TheFooter from '@default-components/layout/Footer.vue'
 
 export default defineComponent({

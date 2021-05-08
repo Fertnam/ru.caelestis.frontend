@@ -1,10 +1,7 @@
 <template>
     <div :class="$style.rulesDivision">
         <h2 :class="$style.rulesDivisionCaption">
-            <fa-icon
-                :class="$style.rulesDivisionCaptionIcon"
-                :icon="division.icon"
-            />
+            <fa-icon :class="$style.rulesDivisionIcon" :icon="division.icon" />
             {{ division.caption }}
         </h2>
 
@@ -16,11 +13,11 @@
             >
                 <div :class="$style.clausesItemInfo">
                     <span
-                        :class="$style.clausesItemInfoNumber"
+                        :class="$style.clausesItemNumber"
                         v-text="clause.number"
                     />
                     <div
-                        :class="$style.clausesItemInfoAppellation"
+                        :class="$style.clausesItemAppellation"
                         v-text="clause.appellation"
                     />
                 </div>
@@ -68,8 +65,6 @@ $padding: 14px;
         position: sticky;
         top: 0;
 
-        margin: 0;
-
         font-size: 1em;
         font-weight: normal;
 
@@ -79,14 +74,14 @@ $padding: 14px;
         user-select: none;
 
         composes: dark-theme from '~@default-scss-modules/theme';
+    }
 
-        &-icon {
-            margin-right: 4px;
+    &__icon {
+        margin-right: 4px;
 
-            will-change: transform;
-            transition: transform var(--transition-duration),
-                color var(--transition-duration);
-        }
+        will-change: transform;
+        transition: transform var(--transition-duration),
+            color var(--transition-duration);
     }
 }
 
@@ -100,11 +95,11 @@ $padding: 14px;
 
         &-info {
             display: flex;
+        }
 
-            &-number {
-                margin-right: 7px;
-                font-weight: bold;
-            }
+        &-number {
+            margin-right: 7px;
+            font-weight: bold;
         }
 
         &-punishment {

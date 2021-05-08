@@ -1,34 +1,26 @@
 <template>
     <article :class="$style.article">
         <div :class="$style.articleHeader">
-            <div
-                :class="$style.articleHeaderCaption"
-                v-text="article.caption"
-            />
-            <div :class="$style.articleHeaderDate">
-                <fa-icon
-                    :class="$style.articleHeaderDateIcon"
-                    icon="calendar-alt"
-                />
+            <div :class="$style.articleCaption" v-text="article.caption" />
+            <div :class="$style.articleDate">
+                <fa-icon :class="$style.articleDateIcon" icon="calendar-alt" />
                 {{ article.date }}
             </div>
         </div>
 
         <div :class="$style.articleBody">
-            <div :class="$style.articleBodyImage">
+            <div :class="$style.articleImage">
                 <img
-                    :class="$style.articleBodyImageSource"
+                    :class="$style.articleImageSource"
                     :src="article.image"
                     alt="Изображение к статье"
                 />
             </div>
-            <div :class="$style.articleBodyContent" v-text="article.content" />
+            <div :class="$style.articleContent" v-text="article.content" />
         </div>
 
         <div :class="$style.articleFooter">
-            <a :class="$style.articleFooterLink" :href="article.to">
-                Подробнее
-            </a>
+            <a :class="$style.articleLink" :href="article.to">Подробнее</a>
         </div>
     </article>
 </template>
@@ -71,71 +63,71 @@ $section-margin-bottom: 20px;
         font-weight: bold;
 
         composes: light-theme light-theme--v_1 from '~@default-scss-modules/theme';
+    }
 
-        &-caption {
-            font-size: 1.35em;
+    &__caption {
+        font-size: 1.35em;
 
-            @include _812 {
-                font-size: 1.1em;
-            }
+        @include _812 {
+            font-size: 1.1em;
+        }
+    }
+
+    &__date {
+        @include _812 {
+            font-size: 0.9em;
         }
 
-        &-date {
+        &-icon {
+            font-size: 1.2em;
+            margin-right: 2px;
+
             @include _812 {
-                font-size: 0.9em;
-            }
-
-            &-icon {
-                font-size: 1.2em;
-                margin-right: 2px;
-
-                @include _812 {
-                    font-size: 1em;
-                }
+                font-size: 1em;
             }
         }
     }
 
     &__body {
         @extend %section-margin-bottom;
+    }
 
-        &-image {
-            @include proportional-content(40);
-            @extend %section-margin-bottom;
+    &__image {
+        @include proportional-content(40);
+        @extend %section-margin-bottom;
 
-            user-select: none;
-            pointer-events: none;
+        user-select: none;
+        pointer-events: none;
 
-            &-source {
-                object-fit: cover;
-                object-position: center;
-            }
+        &-source {
+            object-fit: cover;
+            object-position: center;
         }
+    }
 
-        &-content {
-            display: -webkit-box;
-            -webkit-line-clamp: 6;
-            -webkit-box-orient: vertical;
+    &__content {
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
 
-            overflow: hidden;
+        overflow: hidden;
 
-            line-height: 1.5;
-        }
+        line-height: 1.5;
     }
 
     &__footer {
         display: flex;
         justify-content: flex-end;
+    }
 
-        &-link {
-            padding: 12px;
-            user-select: none;
+    &__link {
+        padding: 12px;
+        user-select: none;
 
-            composes: dark-theme from '~@default-scss-modules/theme';
+        composes: dark-theme from '~@default-scss-modules/theme';
 
-            @include _812 {
-                font-size: 0.9em;
-            }
+        @include _812 {
+            font-size: 0.9em;
         }
     }
 }
