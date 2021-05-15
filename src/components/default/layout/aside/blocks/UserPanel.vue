@@ -1,27 +1,69 @@
 <template>
-    <AsideBlock>
-        <template #caption>Авторизация</template>
+    <AsideBlock :class="$style.userPanel" border-after-caption>
+        <template #caption>
+            Привет, <span :class="$style.userPanelName" v-text="username" />!
+        </template>
 
         <template #default>
-            <form
-                :class="[formStyles.form, formStyles.formThemeAside]"
-                @submit.prevent="onSubmit"
-            >
-                <input
-                    :class="formStyles.formInput"
-                    type="text"
-                    placeholder="Логин"
-                />
-                <input
-                    :class="formStyles.formInput"
-                    type="password"
-                    placeholder="Пароль"
-                />
+            <div :class="$style.userPanelBody">
+                <div :class="$style.userPanelHead">
+                    <img
+                        :class="$style.userPanelHeadSource"
+                        src="https://img.itch.zone/aW1nLzMwNDY5OTAuanBn/original/4PwN%2Bj.jpg"
+                        :alt="username"
+                    />
+                </div>
 
-                <div v-if="false" :class="formStyles.formMessage">Ошибка</div>
+                <ul :class="$style.userPanelMenu">
+                    <li :class="$style.userPanelMenuItem">
+                        <router-link
+                            :class="$style.userPanelMenuLink"
+                            :to="{ name: 'default.index' }"
+                            exact-active-class=""
+                            active-class=""
+                        >
+                            Личный кабинет
+                        </router-link>
+                    </li>
 
-                <button :class="formStyles.formButton">Войти</button>
-            </form>
+                    <li :class="$style.userPanelMenuItem">
+                        <router-link
+                            :class="$style.userPanelMenuLink"
+                            :to="{ name: 'default.index' }"
+                            exact-active-class=""
+                            active-class=""
+                        >
+                            Профиль игрока
+                        </router-link>
+                    </li>
+
+                    <li :class="$style.userPanelMenuItem">
+                        <router-link
+                            :class="$style.userPanelMenuLink"
+                            :to="{ name: 'default.index' }"
+                            exact-active-class=""
+                            active-class=""
+                        >
+                            Пополнить баланс
+                        </router-link>
+                    </li>
+
+                    <li :class="$style.userPanelMenuItem">
+                        <router-link
+                            :class="$style.userPanelMenuLink"
+                            :to="{ name: 'default.index' }"
+                            exact-active-class=""
+                            active-class=""
+                        >
+                            Онлайн-магазин
+                        </router-link>
+                    </li>
+
+                    <li :class="$style.userPanelMenuItem" @click="logout">
+                        Выход
+                    </li>
+                </ul>
+            </div>
         </template>
     </AsideBlock>
 </template>
@@ -29,7 +71,6 @@
 <script>
 import { defineComponent } from 'vue'
 import AsideBlock from '@default-components/layout/aside/Block.vue'
-import formStyles from '@default-scss-modules/form.module.scss'
 
 export default defineComponent({
     name: 'UserPanel',
@@ -38,13 +79,64 @@ export default defineComponent({
     },
     data() {
         return {
-            formStyles,
+            username: 'Fertnam',
         }
     },
     methods: {
-        onSubmit() {
-            alert('Форма отправлена')
+        logout() {
+            alert('Произведен выход из аккаунта')
         },
     },
 })
 </script>
+
+<style lang="scss" module>
+.user-panel {
+    &__name {
+        color: var(--yellow);
+    }
+
+    &__body {
+        display: flex;
+        justify-content: center;
+
+        user-select: none;
+    }
+
+    &__head {
+        --size: 55px;
+
+        margin-right: 20px;
+
+        width: var(--size);
+        height: var(--size);
+
+        pointer-events: none;
+
+        &-source {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+
+    &__menu {
+        &-item {
+            text-transform: uppercase;
+            cursor: pointer;
+
+            transition: color var(--transition-duration);
+
+            &:not(:last-child) {
+                margin-bottom: 14px;
+            }
+
+            &:hover {
+                color: var(--yellow);
+            }
+        }
+    }
+}
+</style>

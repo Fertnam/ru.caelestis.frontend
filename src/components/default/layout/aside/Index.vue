@@ -1,17 +1,25 @@
 <template>
     <aside :class="$style.aside">
-        <UserPanel />
+        <UserPanel v-if="isAuth" />
+        <AuthForm v-else />
     </aside>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+import AuthForm from '@default-components/layout/aside/blocks/AuthForm.vue'
 import UserPanel from '@default-components/layout/aside/blocks/UserPanel.vue'
 
 export default defineComponent({
     name: 'Aside',
     components: {
+        AuthForm,
         UserPanel,
+    },
+    data() {
+        return {
+            isAuth: true,
+        }
     },
 })
 </script>

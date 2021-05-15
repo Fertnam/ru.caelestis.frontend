@@ -1,7 +1,7 @@
 <template>
     <form
         :class="[formStyles.form, formStyles.formThemeRow]"
-        @submit="onSubmit"
+        @submit.prevent="onSubmit"
     >
         <input
             :class="formStyles.formInput"

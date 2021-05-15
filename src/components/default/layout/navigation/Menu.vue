@@ -144,8 +144,6 @@ export default defineComponent({
         opacity: 0;
         visibility: hidden;
 
-        list-style: none;
-
         text-align: center;
         white-space: nowrap;
 
