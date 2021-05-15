@@ -29,7 +29,7 @@
                     <li :class="$style.userPanelMenuItem">
                         <router-link
                             :class="$style.userPanelMenuLink"
-                            :to="{ name: 'default.index' }"
+                            :to="{ name: 'default.profile' }"
                             exact-active-class=""
                             active-class=""
                         >

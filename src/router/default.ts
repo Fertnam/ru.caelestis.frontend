@@ -31,6 +31,11 @@ const routes: RouteRecordRaw[] = [
         name: 'default.registration',
         component: () => import('@default-views/Registration.vue'),
     },
+    {
+        path: 'profile',
+        name: 'default.profile',
+        component: () => import('@default-views/Profile.vue'),
+    },
 ]
 
 export default routes

@@ -1,6 +1,6 @@
 <template>
     <table :class="$style.table">
-        <thead>
+        <thead v-if="captions.length > 0">
             <tr>
                 <th
                     v-for="(caption, index) in captions"
@@ -24,7 +24,7 @@ export default defineComponent({
     props: {
         captions: {
             type: Array,
-            required: true,
+            default: () => [],
         },
     },
 })
