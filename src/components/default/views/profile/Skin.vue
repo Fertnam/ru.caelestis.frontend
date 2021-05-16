@@ -16,6 +16,7 @@ export default {
 
 <style lang="scss" module>
 .skin {
+    width: 212px;
     min-width: 212px;
     height: 410px;
 

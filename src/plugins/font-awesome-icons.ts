@@ -16,6 +16,8 @@ import {
     faCrown,
     faEllipsisH,
     faCalendarAlt,
+    faPlusCircle,
+    faMinusCircle,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -32,7 +34,9 @@ library.add(
     faCommentDots,
     faCrown,
     faEllipsisH,
-    faCalendarAlt
+    faCalendarAlt,
+    faPlusCircle,
+    faMinusCircle
 )
 
 export default {
