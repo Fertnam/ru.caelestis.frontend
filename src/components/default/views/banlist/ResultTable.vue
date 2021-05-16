@@ -14,7 +14,6 @@
 import { defineComponent } from 'vue'
 import Table from '@default-components/Table.vue'
 import banlist from '@global-data/banlist.json'
-import tableStyles from '@default-scss-modules/table.module.scss'
 
 export default defineComponent({
     name: 'ResultTable',
@@ -23,7 +22,6 @@ export default defineComponent({
     },
     data() {
         return {
-            tableStyles,
             banlist,
             captions: [
                 'Нарушитель',

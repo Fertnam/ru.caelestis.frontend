@@ -9,51 +9,111 @@
             <div :class="formStyles.formItem">
                 <label :class="formStyles.formLabel">
                     Логин:
-                    <input :class="formStyles.formInput" type="text" />
+                    <input
+                        v-model="v$.name.$model"
+                        :class="formStyles.formInput"
+                        type="text"
+                    />
                 </label>
-                <div
-                    v-if="false"
-                    :class="[
-                        formStyles.formMessage,
-                        formStyles.formMessageThemeError,
-                    ]"
-                >
+
+                <div v-if="v$.name.$error" :class="formStyles.formMessage">
                     <fa-icon
                         :class="formStyles.formMessageIcon"
                         icon="exclamation-circle"
                     />
-                    Неправильный логин
+
+                    <template v-if="v$.name.required.$invalid">
+                        Укажите логин
+                    </template>
+
+                    <template v-else-if="v$.name.alphaNum.$invalid">
+                        Логин содержит недопустимые символы
+                    </template>
+
+                    <template v-else-if="v$.name.minLength.$invalid">
+                        Минимальный размер логина {{ name.length }} из
+                        {{ v$.name.minLength.$params.min }}
+                    </template>
+
+                    <template v-else-if="v$.name.maxLength.$invalid">
+                        Максимальный размер логина {{ name.length }} из
+                        {{ v$.name.maxLength.$params.max }}
+                    </template>
                 </div>
             </div>
 
             <div :class="formStyles.formItem">
                 <label :class="formStyles.formLabel">
                     Email:
-                    <input :class="formStyles.formInput" type="text" />
+                    <input
+                        v-model="v$.email.$model"
+                        :class="formStyles.formInput"
+                        type="text"
+                    />
                 </label>
-                <div v-if="false" :class="[formStyles.formMessage]" />
+                <div v-if="v$.email.$error" :class="formStyles.formMessage">
+                    <fa-icon
+                        :class="formStyles.formMessageIcon"
+                        icon="exclamation-circle"
+                    />
+
+                    <template v-if="v$.email.required.$invalid">
+                        Укажите email
+                    </template>
+
+                    <template v-else-if="v$.email.email.$invalid">
+                        Неверная структура email
+                    </template>
+                </div>
             </div>
 
             <div :class="formStyles.formItem">
                 <label :class="formStyles.formLabel">
                     Пароль:
-                    <input :class="formStyles.formInput" type="password" />
+                    <input
+                        v-model="v$.password.$model"
+                        :class="formStyles.formInput"
+                        type="password"
+                    />
                 </label>
-                <div v-if="false" :class="[formStyles.formMessage]">
+                <div
+                    v-if="v$.password.$error"
+                    :class="[formStyles.formMessage]"
+                >
                     <fa-icon
                         :class="formStyles.formMessageIcon"
-                        icon="check-circle"
+                        icon="exclamation-circle"
                     />
-                    Пароль корректный
+                    Укажите пароль
                 </div>
             </div>
 
             <div :class="formStyles.formItem">
                 <label :class="formStyles.formLabel">
                     Повторите пароль:
-                    <input :class="formStyles.formInput" type="password" />
+                    <input
+                        v-model="v$.passwordConfirm.$model"
+                        :class="formStyles.formInput"
+                        type="password"
+                    />
                 </label>
-                <div v-if="false" :class="[formStyles.formMessage]" />
+                <div
+                    v-if="v$.passwordConfirm.$error"
+                    :class="[formStyles.formMessage]"
+                >
+                    <fa-icon
+                        :class="formStyles.formMessageIcon"
+                        icon="exclamation-circle"
+                    />
+
+                    <template v-if="v$.passwordConfirm.required.$invalid">
+                        Повторите пароль
+                    </template>
+
+                    <template v-else-if="v$.passwordConfirm.sameAs.$invalid">
+                        Пароли не совпадают
+                    </template>
+                </div>
             </div>
 
             <button :class="formStyles.formButton">Зарегистрироваться</button>
@@ -65,17 +125,50 @@
 import { defineComponent } from 'vue'
 import { caption as captionStyle } from '@default-scss-modules/caption.module.scss'
 import formStyles from '@default-scss-modules/form.module.scss'
+import useVuelidate from '@vuelidate/core'
+import {
+    alphaNum,
+    minLength,
+    maxLength,
+    required,
+    email,
+    sameAs,
+} from '@vuelidate/validators'
 
 export default defineComponent({
     name: 'RegistrationPage',
     data() {
         return {
+            name: '',
+            email: '',
+            password: '',
+            passwordConfirm: '',
+            v$: useVuelidate(),
             captionStyle,
             formStyles,
         }
     },
+    validations() {
+        return {
+            name: {
+                required,
+                alphaNum,
+                minLength: minLength(3),
+                maxLength: maxLength(24),
+            },
+            email: { required, email },
+            password: { required },
+            passwordConfirm: { required, sameAs: sameAs(this.password) },
+        }
+    },
     methods: {
         onSubmit() {
+            this.v$.$touch()
+
+            if (this.v$.$error) {
+                return
+            }
+
             alert('Форма отправлена')
         },
     },

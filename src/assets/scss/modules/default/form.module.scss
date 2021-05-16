@@ -50,6 +50,10 @@ $main-form-item-border-size: 2.5px;
         user-select: none;
     }
 
+    &__message {
+        color: var(--red);
+    }
+
     &__input, &__button {
         composes: light-theme light-theme--v_2 from '~@default-scss-modules/theme';
     }
@@ -73,10 +77,6 @@ $main-form-item-border-size: 2.5px;
         .form__message {
             margin-top: 10px;
 
-            &--theme_error {
-                color: var(--red);
-            }
-
             &-icon {
                 margin-right: 2px;
                 font-size: 1.1em;
@@ -97,8 +97,6 @@ $main-form-item-border-size: 2.5px;
 
         .form__message {
             margin-bottom: 5px;
-
-            color: var(--red);
             text-align: center;
         }
 
