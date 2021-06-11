@@ -54,8 +54,6 @@ export default defineComponent({
 
     &__skin {
         margin-right: 20px;
-
-        pointer-events: none;
         user-select: none;
     }
 

@@ -80,6 +80,9 @@ export default defineComponent({
 
         z-index: -1;
 
+        width: 100vw;
+        height: 100vh;
+
         background-image: url('/images/default/layout.png');
         background-position: bottom center;
         background-repeat: no-repeat;
