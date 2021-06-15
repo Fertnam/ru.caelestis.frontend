@@ -3,18 +3,18 @@
         <tr>
             <td>30 дней</td>
             <td aria-label="Игрок">Бесплатно</td>
-            <td aria-label="VIP">599 руб</td>
-            <td aria-label="Gold">599 руб</td>
-            <td aria-label="Premium">599 руб</td>
-            <td aria-label="Niobium">599 руб</td>
+            <td aria-label="VIP">90 руб</td>
+            <td aria-label="Gold">190 руб</td>
+            <td aria-label="Premium">350 руб</td>
+            <td aria-label="Niobium">500 руб</td>
         </tr>
         <tr>
             <td>Навсегда</td>
             <td aria-label="Игрок">Бесплатно</td>
-            <td aria-label="VIP">599 руб</td>
-            <td aria-label="Gold">599 руб</td>
-            <td aria-label="Premium">599 руб</td>
-            <td aria-label="Niobium">5999 руб</td>
+            <td aria-label="VIP">900 руб</td>
+            <td aria-label="Gold">1900 руб</td>
+            <td aria-label="Premium">3500 руб</td>
+            <td aria-label="Niobium">5000 руб</td>
         </tr>
     </Table>
 </template>

@@ -54,7 +54,7 @@ $padding: 14px;
 }
 
 .rules-division {
-    &:hover .rules-division__caption-icon {
+    &:hover .rules-division__icon {
         color: var(--yellow);
         transform: scale(1.15);
     }
