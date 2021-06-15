@@ -22,6 +22,9 @@
             "@plugins/*": [
                 "src/plugins/*"
             ],
+            "@classes/*": [
+                "src/classes/*"
+            ],
             "@layouts/*": [
                 "src/layouts/*"
             ],

@@ -2,10 +2,35 @@
     <div :class="$style.page">
         <h1 :class="[captionStyle, $style.pageCaption]">Регистрация</h1>
 
+        <div v-if="result === 'success'" :class="$style.pageResult">
+            Регистрация прошла успешно. Подтвердите электронную почту
+        </div>
+
+        <div
+            v-else-if="result === 'error'"
+            :class="[$style.pageResult, $style.pageResultError]"
+        >
+            При регистрации возникла ошибка. Попробуйте еще раз
+        </div>
+
         <form
             :class="[formStyles.form, formStyles.formThemeMain]"
             @submit.prevent="onSubmit"
         >
+            <!-- Лучшая версия            -->
+            <!--            <FormField>-->
+            <!--                <template #label>Логин</template>-->
+            <!--                <template #default>-->
+            <!--                    <FormInput v-model="" />-->
+            <!--                </template>-->
+            <!--                <template #errors>-->
+            <!--                    <FormError />-->
+            <!--                </template>-->
+            <!--            </FormField>-->
+
+            <!--            2 версия-->
+            <!--            <FormInputField v-model="" />-->
+
             <div :class="formStyles.formItem">
                 <label :class="formStyles.formLabel">
                     Логин:
@@ -125,6 +150,7 @@
 import { defineComponent } from 'vue'
 import { caption as captionStyle } from '@default-scss-modules/caption.module.scss'
 import formStyles from '@default-scss-modules/form.module.scss'
+import { UsersRegisterData } from '@classes/Api/Users'
 import useVuelidate from '@vuelidate/core'
 import {
     alphaNum,
@@ -135,6 +161,14 @@ import {
     sameAs,
 } from '@vuelidate/validators'
 
+enum Result {
+    Success = 'success',
+    Error = 'error',
+    Unknown = 'unknown',
+}
+
+let result: Result = Result.Unknown
+
 export default defineComponent({
     name: 'RegistrationPage',
     data() {
@@ -143,6 +177,7 @@ export default defineComponent({
             email: '',
             password: '',
             passwordConfirm: '',
+            result,
             v$: useVuelidate(),
             captionStyle,
             formStyles,
@@ -162,14 +197,28 @@ export default defineComponent({
         }
     },
     methods: {
-        onSubmit() {
+        async onSubmit() {
             this.v$.$touch()
 
             if (this.v$.$error) {
                 return
             }
 
-            alert('Форма отправлена')
+            try {
+                const data: UsersRegisterData = {
+                    username: this.name,
+                    email: this.email,
+                    password: this.password,
+                    password_confirmation: this.passwordConfirm,
+                }
+
+                await this.$api.users.register(data)
+
+                this.result = Result.Success
+            } catch (e) {
+                console.error(e)
+                this.result = Result.Error
+            }
         },
     },
 })
@@ -179,6 +228,23 @@ export default defineComponent({
 .page {
     &__caption {
         margin-bottom: 40px;
+    }
+
+    &__result {
+        @include box-shadow(5px, var(--dark-blue-v1));
+
+        margin-bottom: 30px;
+        padding: 12px;
+
+        font-size: 1.2em;
+        font-weight: bold;
+
+        composes: light-theme light-theme--v_1 from '~@default-scss-modules/theme';
+
+        &--error {
+            @include red-theme;
+            @include box-shadow(5px, var(--dark-red));
+        }
     }
 }
 </style>

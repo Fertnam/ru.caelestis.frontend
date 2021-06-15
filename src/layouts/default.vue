@@ -40,7 +40,7 @@ export default defineComponent({
     --yellow: #fff9cc;
     --dark-yellow: #99957a;
     --red: #c45252;
-    --dark-red: #c22727;
+    --dark-red: #662e2e;
 
     /* Базовый размер padding для разделов (они помечены через grid-area) */
     --base-padding-of-area: 30px;

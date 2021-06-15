@@ -14,6 +14,7 @@ module.exports = {
             alias: {
                 '@': path.resolve('src'),
                 '@plugins': path.resolve('src/plugins'),
+                '@classes': path.resolve('src/classes'),
                 '@layouts': path.resolve('src/layouts'),
                 '@default-views': path.resolve('src/views/default'),
                 '@admin-views': path.resolve('src/views/admin'),

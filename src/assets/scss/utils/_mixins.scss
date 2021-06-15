@@ -4,6 +4,12 @@
     background-color: var(--dark-blue-v2);
 }
 
+/* Красная тема для блоков */
+@mixin red-theme {
+    color: var(--dark-red);
+    background-color: var(--red);
+}
+
 /* Светлая тема для блоков */
 @mixin light-theme($background: var(--blue)) {
     color: var(--dark-blue-v2);
