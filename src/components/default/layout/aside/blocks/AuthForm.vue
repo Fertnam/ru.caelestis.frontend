@@ -8,11 +8,13 @@
                 @submit.prevent="onSubmit"
             >
                 <input
+                    v-model="username"
                     :class="formStyles.formInput"
                     type="text"
                     placeholder="Логин"
                 />
                 <input
+                    v-model="password"
                     :class="formStyles.formInput"
                     type="password"
                     placeholder="Пароль"
@@ -26,10 +28,11 @@
     </AsideBlock>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 import AsideBlock from '@default-components/layout/aside/Block.vue'
 import formStyles from '@default-scss-modules/form.module.scss'
+import { UsersAuthData } from '@classes/Api/Users'
 
 export default defineComponent({
     name: 'AuthForm',
@@ -38,12 +41,23 @@ export default defineComponent({
     },
     data() {
         return {
+            username: '',
+            password: '',
             formStyles,
         }
     },
     methods: {
-        onSubmit() {
-            alert('Форма отправлена')
+        async onSubmit() {
+            try {
+                const data: UsersAuthData = {
+                    username: this.username,
+                    password: this.password,
+                }
+
+                await this.$api.users.auth(data)
+            } catch (e) {
+                console.error(e)
+            }
         },
     },
 })

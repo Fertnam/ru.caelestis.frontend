@@ -2,12 +2,12 @@
     <div :class="$style.page">
         <h1 :class="[captionStyle, $style.pageCaption]">Регистрация</h1>
 
-        <div v-if="result === 'success'" :class="$style.pageResult">
+        <div v-if="status === 'success'" :class="$style.pageResult">
             Регистрация прошла успешно. Подтвердите электронную почту
         </div>
 
         <div
-            v-else-if="result === 'error'"
+            v-else-if="status === 'error'"
             :class="[$style.pageResult, $style.pageResultError]"
         >
             При регистрации возникла ошибка. Попробуйте еще раз
@@ -161,13 +161,13 @@ import {
     sameAs,
 } from '@vuelidate/validators'
 
-enum Result {
+enum RegistrationStatus {
     Success = 'success',
     Error = 'error',
     Unknown = 'unknown',
 }
 
-let result: Result = Result.Unknown
+let status: RegistrationStatus = RegistrationStatus.Unknown
 
 export default defineComponent({
     name: 'RegistrationPage',
@@ -177,7 +177,7 @@ export default defineComponent({
             email: '',
             password: '',
             passwordConfirm: '',
-            result,
+            status,
             v$: useVuelidate(),
             captionStyle,
             formStyles,
@@ -214,10 +214,10 @@ export default defineComponent({
 
                 await this.$api.users.register(data)
 
-                this.result = Result.Success
+                this.status = RegistrationStatus.Success
             } catch (e) {
                 console.error(e)
-                this.result = Result.Error
+                this.status = RegistrationStatus.Error
             }
         },
     },

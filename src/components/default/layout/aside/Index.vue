@@ -5,7 +5,7 @@
     </aside>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 import AuthForm from '@default-components/layout/aside/blocks/AuthForm.vue'
 import UserPanel from '@default-components/layout/aside/blocks/UserPanel.vue'
@@ -16,10 +16,10 @@ export default defineComponent({
         AuthForm,
         UserPanel,
     },
-    data() {
-        return {
-            isAuth: false,
-        }
+    computed: {
+        isAuth(): boolean {
+            return !!this.$store.getters['user/get']
+        },
     },
 })
 </script>

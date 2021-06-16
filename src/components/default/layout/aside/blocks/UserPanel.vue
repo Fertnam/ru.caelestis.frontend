@@ -1,7 +1,8 @@
 <template>
     <AsideBlock :class="$style.userPanel" border-after-caption>
         <template #caption>
-            Привет, <span :class="$style.userPanelName" v-text="username" />!
+            Привет,
+            <span :class="$style.userPanelName" v-text="user.username" />!
         </template>
 
         <template #default>
@@ -68,7 +69,7 @@
     </AsideBlock>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 import AsideBlock from '@default-components/layout/aside/Block.vue'
 
@@ -81,6 +82,11 @@ export default defineComponent({
         return {
             username: 'Fertnam',
         }
+    },
+    computed: {
+        user() {
+            return this.$store.getters['user/get']
+        },
     },
     methods: {
         logout() {

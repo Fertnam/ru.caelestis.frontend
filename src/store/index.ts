@@ -1,8 +1,10 @@
-import { createStore } from 'vuex'
+import { createStore, ModuleTree } from 'vuex'
+import user from '@/store/modules/user'
+
+const modules: ModuleTree<any> = {
+    user,
+}
 
 export default createStore({
-    state: {},
-    mutations: {},
-    actions: {},
-    modules: {},
+    modules,
 })
