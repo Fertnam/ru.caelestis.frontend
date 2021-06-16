@@ -1,8 +1,8 @@
 import { createStore, ModuleTree } from 'vuex'
-import user from '@/store/modules/user'
+import auth from '@/store/modules/auth'
 
 const modules: ModuleTree<any> = {
-    user,
+    auth,
 }
 
 export default createStore({

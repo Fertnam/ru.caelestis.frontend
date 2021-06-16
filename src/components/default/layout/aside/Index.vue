@@ -18,7 +18,7 @@ export default defineComponent({
     },
     computed: {
         isAuth(): boolean {
-            return !!this.$store.getters['user/get']
+            return this.$store.getters['auth/user'].isAuth()
         },
     },
 })

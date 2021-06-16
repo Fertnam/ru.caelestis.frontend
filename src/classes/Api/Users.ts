@@ -1,39 +1,25 @@
 import axios, { AxiosStatic } from 'axios'
 import $store from '@/store'
+import { User } from '@classes/User'
 
-export type UsersRegisterData = {
+export type UserRegisterFields = {
     username: string
     email: string
     password: string
     password_confirmation: string
 }
 
-export type UsersAuthData = {
+export type UserAuthFields = {
     username: string
     password: string
 }
 
-export type User = {
-    activation_code: string
-    balance: number
-    ban_reason: string
-    created_at: Date
-    cs_group_id: number
-    email: string
-    email_verified_at: Date | null
-    group: unknown
-    id: number
-    updated_at: Date | null
-    username: string
-    xf_user_id: number
-}
-
 export class Users {
-    public register(data: UsersRegisterData): Promise<AxiosStatic> {
+    public register(data: UserRegisterFields): Promise<AxiosStatic> {
         return axios.post('http://127.0.0.1:8000/api/register', data)
     }
 
-    public async auth(data: UsersAuthData): Promise<any> {
+    public async auth(data: UserAuthFields): Promise<any> {
         const {
             data: { token },
         } = await axios.post('http://127.0.0.1:8000/api/login', data)
@@ -42,9 +28,7 @@ export class Users {
 
         const user: User = await this.getBySession()
 
-        $store.commit('user/set', user)
-
-        console.log($store)
+        $store.commit('auth/setUser', user)
     }
 
     public async getBySession(): Promise<User> {
@@ -57,6 +41,6 @@ export class Users {
             }
         )
 
-        return user
+        return new User(user)
     }
 }

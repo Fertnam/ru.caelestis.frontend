@@ -150,7 +150,7 @@
 import { defineComponent } from 'vue'
 import { caption as captionStyle } from '@default-scss-modules/caption.module.scss'
 import formStyles from '@default-scss-modules/form.module.scss'
-import { UsersRegisterData } from '@classes/Api/Users'
+import { UserRegisterFields } from '@classes/Api/Users'
 import useVuelidate from '@vuelidate/core'
 import {
     alphaNum,
@@ -205,7 +205,7 @@ export default defineComponent({
             }
 
             try {
-                const data: UsersRegisterData = {
+                const data: UserRegisterFields = {
                     username: this.name,
                     email: this.email,
                     password: this.password,

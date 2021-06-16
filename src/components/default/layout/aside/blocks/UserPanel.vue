@@ -2,7 +2,7 @@
     <AsideBlock :class="$style.userPanel" border-after-caption>
         <template #caption>
             Привет,
-            <span :class="$style.userPanelName" v-text="user.username" />!
+            <span :class="$style.userPanelName" v-text="user.getUsername()" />!
         </template>
 
         <template #default>
@@ -11,7 +11,7 @@
                     <img
                         :class="$style.userPanelHeadSource"
                         src="https://img.itch.zone/aW1nLzMwNDY5OTAuanBn/original/4PwN%2Bj.jpg"
-                        :alt="username"
+                        :alt="user.getUsername()"
                     />
                 </div>
 
@@ -78,14 +78,9 @@ export default defineComponent({
     components: {
         AsideBlock,
     },
-    data() {
-        return {
-            username: 'Fertnam',
-        }
-    },
     computed: {
         user() {
-            return this.$store.getters['user/get']
+            return this.$store.getters['auth/user']
         },
     },
     methods: {

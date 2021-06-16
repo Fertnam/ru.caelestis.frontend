@@ -32,7 +32,7 @@
 import { defineComponent } from 'vue'
 import AsideBlock from '@default-components/layout/aside/Block.vue'
 import formStyles from '@default-scss-modules/form.module.scss'
-import { UsersAuthData } from '@classes/Api/Users'
+import { UserAuthFields } from '@classes/Api/Users'
 
 export default defineComponent({
     name: 'AuthForm',
@@ -49,7 +49,7 @@ export default defineComponent({
     methods: {
         async onSubmit() {
             try {
-                const data: UsersAuthData = {
+                const data: UserAuthFields = {
                     username: this.username,
                     password: this.password,
                 }
