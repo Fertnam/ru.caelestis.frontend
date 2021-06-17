@@ -8,4 +8,6 @@ export class Services {
     }
 }
 
-export default new Services()
+const services: Services = new Services()
+
+export default services

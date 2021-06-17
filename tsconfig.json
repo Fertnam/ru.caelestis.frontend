@@ -25,6 +25,18 @@
             "@classes/*": [
                 "src/classes/*"
             ],
+            "@api/*": [
+                "src/classes/api/*"
+            ],
+            "@models/*": [
+                "src/classes/models/*"
+            ],
+            "@services/*": [
+                "src/classes/services/*"
+            ],
+            "@store/*": [
+                "src/store/*"
+            ],
             "@layouts/*": [
                 "src/layouts/*"
             ],

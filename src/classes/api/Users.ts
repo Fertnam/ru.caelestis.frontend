@@ -1,5 +1,5 @@
-import axios, { AxiosStatic } from 'axios'
-import { User } from '@classes/User'
+import axios from 'axios'
+import { User } from '@models/User'
 
 export type UserRegisterFields = {
     username: string
@@ -14,7 +14,7 @@ export type UserAuthFields = {
 }
 
 export class Users {
-    public create(data: UserRegisterFields): Promise<AxiosStatic> {
+    public create(data: UserRegisterFields): Promise<void> {
         return axios.post(process.env.VUE_APP_API + 'register', data)
     }
 
@@ -26,7 +26,7 @@ export class Users {
         return token as string
     }
 
-    public destroyAuthToken(): Promise<AxiosStatic> {
+    public destroyAuthToken(): Promise<void> {
         return axios.post(process.env.VUE_APP_API + 'logout', null, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,

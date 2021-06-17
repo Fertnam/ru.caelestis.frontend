@@ -17,6 +17,7 @@
         "animate.css": "^4.1.1",
         "axios": "^0.21.1",
         "core-js": "^3.6.5",
+        "mitt": "^2.1.0",
         "normalize.css": "^8.0.1",
         "skinview3d": "^2.0.1",
         "vue": "^3.0.0",

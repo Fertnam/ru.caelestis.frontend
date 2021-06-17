@@ -32,7 +32,7 @@
 import { defineComponent } from 'vue'
 import AsideBlock from '@default-components/layout/aside/Block.vue'
 import formStyles from '@default-scss-modules/form.module.scss'
-import { UserAuthFields } from '@classes/Api/Users'
+import { UserAuthFields } from '@api/Users'
 
 export default defineComponent({
     name: 'AuthForm',

@@ -1,9 +1,10 @@
 export {}
 
 import { Store } from 'vuex'
-import { Api } from '@classes/Api'
-import { Services } from '@/services'
+import { Api } from '@api/index'
+import { Services } from '@services/index'
 import { AxiosStatic } from 'axios'
+import { Emitter } from 'mitt'
 
 declare module '@vue/runtime-core' {
     interface ComponentCustomProperties {
@@ -13,5 +14,6 @@ declare module '@vue/runtime-core' {
         $api: Api
         $services: Services
         $axios: AxiosStatic
+        $mitter: Emitter
     }
 }

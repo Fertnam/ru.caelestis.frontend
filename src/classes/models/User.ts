@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export interface IAuthenticate {
     isAuth(): boolean
 }
@@ -83,5 +85,43 @@ export class User implements IAuthenticate {
 
     public getBalance(): number {
         return this.balance
+    }
+
+    public async updateSkin(skin: File): Promise<void> {
+        const formData: FormData = new FormData()
+
+        formData.append('image', skin)
+
+        await axios.post(process.env.VUE_APP_API + 'upload/skin', formData, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+    }
+
+    public async updateCape(cape: File): Promise<void> {
+        const formData: FormData = new FormData()
+
+        formData.append('image', cape)
+
+        await axios.post(process.env.VUE_APP_API + 'upload/cloak', formData, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+    }
+
+    public getSkin(): string {
+        return `http://127.0.0.1:8000/image/skins/${this.username}.png`
+    }
+
+    public getCape(): string {
+        return `http://127.0.0.1:8000/image/cloaks/${this.username}.png`
+    }
+
+    public getSkinFull(mode: number, size: number = 128): string {
+        return `http://127.0.0.1:8000/scripts/skin.php?user=${this.username}&mode=${mode}&size=${size}`
     }
 }

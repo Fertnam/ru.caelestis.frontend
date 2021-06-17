@@ -2,16 +2,22 @@
     <div :class="$style.page">
         <h1 :class="[captionStyle, $style.pageCaption]">Регистрация</h1>
 
-        <div v-if="status === 'success'" :class="$style.pageResult">
-            Регистрация прошла успешно. Подтвердите электронную почту
-        </div>
-
-        <div
-            v-else-if="status === 'error'"
-            :class="[$style.pageResult, $style.pageResultError]"
+        <transition
+            mode="out-in"
+            enter-active-class="animate__animated animate__fadeIn animate__fast"
+            leave-active-class="animate__animated animate__fadeOut animate__fast"
         >
-            При регистрации возникла ошибка. Попробуйте еще раз
-        </div>
+            <div v-if="status === 'success'" :class="$style.pageResult">
+                Регистрация прошла успешно. Подтвердите электронную почту
+            </div>
+
+            <div
+                v-else-if="status === 'error'"
+                :class="[$style.pageResult, $style.pageResultError]"
+            >
+                При регистрации возникла ошибка. Попробуйте еще раз
+            </div>
+        </transition>
 
         <form
             :class="[formStyles.form, formStyles.formThemeMain]"
@@ -150,7 +156,7 @@
 import { defineComponent } from 'vue'
 import { caption as captionStyle } from '@default-scss-modules/caption.module.scss'
 import formStyles from '@default-scss-modules/form.module.scss'
-import { UserRegisterFields } from '@classes/Api/Users'
+import { UserRegisterFields } from '@api/Users'
 import useVuelidate from '@vuelidate/core'
 import {
     alphaNum,
@@ -236,7 +242,7 @@ export default defineComponent({
         margin-bottom: 30px;
         padding: 12px;
 
-        font-size: 1.2em;
+        font-size: 1.1em;
         font-weight: bold;
 
         composes: light-theme light-theme--v_1 from '~@default-scss-modules/theme';

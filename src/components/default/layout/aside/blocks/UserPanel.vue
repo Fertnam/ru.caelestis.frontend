@@ -10,7 +10,7 @@
                 <div :class="$style.userPanelHead">
                     <img
                         :class="$style.userPanelHeadSource"
-                        src="https://img.itch.zone/aW1nLzMwNDY5OTAuanBn/original/4PwN%2Bj.jpg"
+                        :src="skinHead"
                         :alt="user.getUsername()"
                     />
                 </div>
@@ -67,12 +67,29 @@ export default defineComponent({
     components: {
         AsideBlock,
     },
+    data() {
+        return { skinUpdatedAt: Date.now() }
+    },
     computed: {
         user() {
             return this.$store.getters['auth/user']
         },
+        skinHead(): string {
+            return `${this.user.getSkinFull(3)}&updated_at=${
+                this.skinUpdatedAt
+            }`
+        },
+    },
+    mounted() {
+        this.$mitter.on('skin-updated', this.onSkinUpdated)
+    },
+    beforeUnmount() {
+        this.$mitter.off('skin-updated', this.onSkinUpdated)
     },
     methods: {
+        onSkinUpdated() {
+            this.skinUpdatedAt = Date.now()
+        },
         logout() {
             this.$services.users.logout()
         },

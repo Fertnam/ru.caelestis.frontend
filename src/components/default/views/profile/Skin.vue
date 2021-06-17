@@ -15,8 +15,8 @@
         </div>
 
         <div :class="$style.skinLoaders">
-            <input ref="skinInput" type="file" @change="changeSkin" />
-            <input ref="capeInput" type="file" @change="changeCape" />
+            <input ref="skinInput" type="file" @change="updateSkin" />
+            <input ref="capeInput" type="file" @change="updateCape" />
         </div>
     </div>
 </template>
@@ -34,36 +34,70 @@ export default {
         return {
             viewer: null,
             orbitControls: null,
+            skinReader: null,
+            capeReader: null,
         }
     },
+    computed: {
+        user() {
+            return this.$store.getters['auth/user']
+        },
+    },
     mounted() {
-        this.viewer = new FXAASkinViewer({
-            canvas: this.$refs.canvas,
-            width: 215,
-            height: 430,
-            skin: 'images/global/fake-skin.png',
-            cape: 'images/global/fake-cape.png',
-        })
-
-        this.viewer.renderer.setClearColor(0xc6c9de)
-
-        this.orbitControls = createOrbitControls(this.viewer)
-        this.orbitControls.enableZoom = false
-
-        this.viewer.animations.add(WalkingAnimation)
+        this.initViewer()
+        this.initReaders()
     },
     methods: {
+        initViewer() {
+            this.viewer = new FXAASkinViewer({
+                canvas: this.$refs.canvas,
+                width: 215,
+                height: 430,
+                skin: this.user.getSkin(),
+                cape: this.user.getCape(),
+            })
+
+            this.viewer.renderer.setClearColor(0xc6c9de)
+
+            this.orbitControls = createOrbitControls(this.viewer)
+            this.orbitControls.enableZoom = false
+
+            this.viewer.animations.add(WalkingAnimation)
+        },
+        initReaders() {
+            const updateSkinInViewer = () => {
+                this.viewer.loadSkin(this.skinReader.result)
+            }
+
+            const updateCapeInViewer = () => {
+                this.viewer.loadCape(this.capeReader.result)
+            }
+
+            this.skinReader = new FileReader()
+            this.capeReader = new FileReader()
+
+            this.skinReader.onload = updateSkinInViewer
+            this.capeReader.onload = updateCapeInViewer
+        },
         openSkinLoader() {
             this.$refs.skinInput.click()
         },
         openCapeLoader() {
             this.$refs.capeInput.click()
         },
-        changeSkin(event) {
-            this.viewer.loadSkin(event.target.value)
+        async updateSkin(event) {
+            const skin = event.target.files[0]
+
+            await this.user.updateSkin(skin)
+
+            this.$mitter.emit('skin-updated')
+            this.skinReader.readAsDataURL(skin)
         },
-        changeCape(event) {
-            this.viewer.loadCape(event.target.value)
+        async updateCape(event) {
+            const cape = event.target.files[0]
+
+            await this.user.updateCape(cape)
+            this.capeReader.readAsDataURL(cape)
         },
     },
 }

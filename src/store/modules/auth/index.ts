@@ -1,5 +1,5 @@
 import { Module } from 'vuex'
-import { IAuthenticate, Guest } from '@classes/User'
+import { IAuthenticate, Guest } from '@models/User'
 
 import getters from './getters'
 import mutations from './mutations'

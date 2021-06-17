@@ -1,7 +1,8 @@
 import { App } from 'vue'
-import api from '@classes/Api'
-import services from '@/services'
 import axios from 'axios'
+import api from '@api/index'
+import services from '@services/index'
+import mitt from 'mitt'
 
 export default {
     install(app: App): void {
@@ -15,5 +16,6 @@ export default {
         app.config.globalProperties.$api = api
         app.config.globalProperties.$services = services
         app.config.globalProperties.$axios = axios
+        app.config.globalProperties.$mitter = mitt()
     },
 }
