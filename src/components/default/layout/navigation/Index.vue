@@ -4,8 +4,8 @@
 
         <transition
             mode="out-in"
-            enter-active-class="animate__animated animate__bounceIn animate__fast"
-            leave-active-class="animate__animated animate__bounceOut animate__fast"
+            enter-active-class="animate__animated animate__bounceIn"
+            leave-active-class="animate__animated animate__zoomOut"
         >
             <a v-if="isAuth" :class="$style.navigationLink" href="#">
                 Скачать лаунчер

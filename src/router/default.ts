@@ -35,6 +35,9 @@ const routes: RouteRecordRaw[] = [
         path: 'profile',
         name: 'default.profile',
         component: () => import('@default-views/Profile.vue'),
+        meta: {
+            requiresAuth: true,
+        },
     },
 ]
 

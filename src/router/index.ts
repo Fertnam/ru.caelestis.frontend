@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import store from '@store/index'
 
 // Layouts
 import DefaultLayout from '@layouts/default.vue'
@@ -26,6 +27,14 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth && !store.getters['auth/user'].isAuth()) {
+        next(from)
+    }
+
+    next()
 })
 
 export default router
