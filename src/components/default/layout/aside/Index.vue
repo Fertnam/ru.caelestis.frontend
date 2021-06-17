@@ -1,7 +1,13 @@
 <template>
     <aside :class="$style.aside">
-        <UserPanel v-if="isAuth" />
-        <AuthForm v-else />
+        <transition
+            mode="out-in"
+            enter-active-class="animate__animated animate__bounceIn animate__fast"
+            leave-active-class="animate__animated animate__bounceOut animate__fast"
+        >
+            <UserPanel v-if="isAuth" />
+            <AuthForm v-else />
+        </transition>
     </aside>
 </template>
 

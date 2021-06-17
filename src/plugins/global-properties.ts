@@ -1,5 +1,6 @@
 import { App } from 'vue'
-import Api from '@classes/Api/Api'
+import api from '@classes/Api'
+import services from '@/services'
 import axios from 'axios'
 
 export default {
@@ -11,7 +12,8 @@ export default {
         }
 
         app.config.globalProperties.$timeout = timeout
-        app.config.globalProperties.$api = new Api()
+        app.config.globalProperties.$api = api
+        app.config.globalProperties.$services = services
         app.config.globalProperties.$axios = axios
     },
 }

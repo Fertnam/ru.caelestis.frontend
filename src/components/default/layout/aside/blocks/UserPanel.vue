@@ -45,17 +45,6 @@
                             exact-active-class=""
                             active-class=""
                         >
-                            Пополнить баланс
-                        </router-link>
-                    </li>
-
-                    <li :class="$style.userPanelMenuItem">
-                        <router-link
-                            :class="$style.userPanelMenuLink"
-                            :to="{ name: 'default.index' }"
-                            exact-active-class=""
-                            active-class=""
-                        >
                             Онлайн-магазин
                         </router-link>
                     </li>
@@ -85,7 +74,7 @@ export default defineComponent({
     },
     methods: {
         logout() {
-            alert('Произведен выход из аккаунта')
+            this.$services.users.logout()
         },
     },
 })

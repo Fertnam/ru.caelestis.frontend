@@ -1,10 +1,10 @@
-export interface IUser {
+export interface IAuthenticate {
     isAuth(): boolean
 }
 
 export type UserFields = {
     id: number
-    created_at: Date
+    created_at: string
 
     username: string
     email: string
@@ -15,19 +15,19 @@ export type UserFields = {
     cs_group_id: number
     xf_user_id: number | null
 
-    updated_at: Date | null
-    email_verified_at: Date | null
+    updated_at: string | null
+    email_verified_at: string | null
 }
 
-export class Guest implements IUser {
+export class Guest implements IAuthenticate {
     public isAuth(): boolean {
         return false
     }
 }
 
-export class User implements IUser {
+export class User implements IAuthenticate {
     private readonly id: number
-    private readonly createdAt: Date
+    private readonly createdAt: string
 
     private username: string
     private email: string
@@ -38,8 +38,8 @@ export class User implements IUser {
     private groupId: number
     private xfUserId: number | null
 
-    private updatedAt: Date | null
-    private emailVerifiedAt: Date | null
+    private updatedAt: string | null
+    private emailVerifiedAt: string | null
 
     public constructor(fields: UserFields) {
         this.id = fields.id
@@ -64,5 +64,24 @@ export class User implements IUser {
 
     public getUsername(): string {
         return this.username
+    }
+
+    public getEmail(): string {
+        return this.email
+    }
+
+    public getCreatedAt(): string {
+        const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        }
+
+        return new Date(this.createdAt).toLocaleDateString('ru-RU', options)
+    }
+
+    public getBalance(): number {
+        return this.balance
     }
 }

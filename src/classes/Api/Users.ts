@@ -1,5 +1,4 @@
 import axios, { AxiosStatic } from 'axios'
-import $store from '@/store'
 import { User } from '@classes/User'
 
 export type UserRegisterFields = {
@@ -15,25 +14,29 @@ export type UserAuthFields = {
 }
 
 export class Users {
-    public register(data: UserRegisterFields): Promise<AxiosStatic> {
-        return axios.post('http://127.0.0.1:8000/api/register', data)
+    public create(data: UserRegisterFields): Promise<AxiosStatic> {
+        return axios.post(process.env.VUE_APP_API + 'register', data)
     }
 
-    public async auth(data: UserAuthFields): Promise<any> {
+    public async createAuthToken(data: UserAuthFields): Promise<string> {
         const {
             data: { token },
-        } = await axios.post('http://127.0.0.1:8000/api/login', data)
+        } = await axios.post(process.env.VUE_APP_API + 'login', data)
 
-        localStorage.setItem('token', token)
-
-        const user: User = await this.getBySession()
-
-        $store.commit('auth/setUser', user)
+        return token as string
     }
 
-    public async getBySession(): Promise<User> {
+    public destroyAuthToken(): Promise<AxiosStatic> {
+        return axios.post(process.env.VUE_APP_API + 'logout', null, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        })
+    }
+
+    public async getByAuthToken(): Promise<User> {
         const { data: user } = await axios.get(
-            'http://127.0.0.1:8000/api/user',
+            process.env.VUE_APP_API + 'user',
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,

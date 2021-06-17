@@ -212,7 +212,7 @@ export default defineComponent({
                     password_confirmation: this.passwordConfirm,
                 }
 
-                await this.$api.users.register(data)
+                await this.$api.users.create(data)
 
                 this.status = RegistrationStatus.Success
             } catch (e) {

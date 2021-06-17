@@ -1,7 +1,7 @@
-import { Users } from '@/classes/Api/Users'
-import { Articles } from '@/classes/Api/Articles'
+import { Users } from './Users'
+import { Articles } from './Articles'
 
-export default class Api {
+export class Api {
     public readonly users: Users
     public readonly articles: Articles
 
@@ -10,3 +10,5 @@ export default class Api {
         this.articles = new Articles()
     }
 }
+
+export default new Api()

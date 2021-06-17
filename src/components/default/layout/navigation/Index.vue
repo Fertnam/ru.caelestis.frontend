@@ -1,15 +1,27 @@
 <template>
     <nav :class="$style.navigation">
         <Menu :class="$style.navigationMenu" />
-        <router-link
-            :class="$style.navigationRegistrationLink"
-            :to="{ name: 'default.registration' }"
-            exact-active-class=""
-            active-class=""
-            exact
+
+        <transition
+            mode="out-in"
+            enter-active-class="animate__animated animate__bounceIn animate__fast"
+            leave-active-class="animate__animated animate__bounceOut animate__fast"
         >
-            Начать игру
-        </router-link>
+            <a v-if="isAuth" :class="$style.navigationLink" href="#">
+                Скачать лаунчер
+            </a>
+
+            <router-link
+                v-else
+                :class="$style.navigationLink"
+                :to="{ name: 'default.registration' }"
+                exact-active-class=""
+                active-class=""
+                exact
+            >
+                Начать игру
+            </router-link>
+        </transition>
     </nav>
 </template>
 
@@ -21,6 +33,11 @@ export default defineComponent({
     name: 'Navigation',
     components: {
         Menu,
+    },
+    computed: {
+        isAuth(): boolean {
+            return this.$store.getters['auth/user'].isAuth()
+        },
     },
 })
 </script>
@@ -52,7 +69,7 @@ export default defineComponent({
         margin-left: var(--base-padding-of-area);
     }
 
-    &__registration-link {
+    &__link {
         $shadow-size: 5px;
         $fallibility: calc(var(--base-padding-of-area) * 2);
 

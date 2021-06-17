@@ -2,11 +2,11 @@
     <Table :class="$style.infoTable">
         <tr>
             <td>Ник</td>
-            <td>Fertnam</td>
+            <td v-text="user.getUsername()" />
         </tr>
         <tr>
             <td>Email</td>
-            <td>chtoto@mail.ru</td>
+            <td v-text="user.getEmail()" />
         </tr>
         <tr>
             <td>Группа</td>
@@ -14,16 +14,16 @@
         </tr>
         <tr>
             <td>Дата регистрации</td>
-            <td>15-05-2021</td>
+            <td v-text="user.getCreatedAt()" />
         </tr>
         <tr>
             <td>Баланс</td>
-            <td>0 руб</td>
+            <td>{{ user.getBalance() || 0 }} руб</td>
         </tr>
     </Table>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 import Table from '@default-components/Table.vue'
 
@@ -31,6 +31,11 @@ export default defineComponent({
     name: 'InfoTable',
     components: {
         Table,
+    },
+    computed: {
+        user() {
+            return this.$store.getters['auth/user']
+        },
     },
 })
 </script>

@@ -54,7 +54,7 @@ export default defineComponent({
                     password: this.password,
                 }
 
-                await this.$api.users.auth(data)
+                await this.$services.users.login(data)
             } catch (e) {
                 console.error(e)
             }

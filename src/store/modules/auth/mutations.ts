@@ -1,9 +1,13 @@
 import { MutationTree } from 'vuex'
 import { AuthState } from './index'
+import { User, Guest } from '@classes/User'
 
 const mutations: MutationTree<AuthState> = {
-    setUser(state, user) {
+    saveUser(state, user: User) {
         state.user = user
+    },
+    reset(state) {
+        state.user = new Guest()
     },
 }
 
