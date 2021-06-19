@@ -53,8 +53,8 @@ export default {
                 canvas: this.$refs.canvas,
                 width: 215,
                 height: 430,
-                skin: this.user.getSkin(),
-                cape: this.user.getCape(),
+                skin: this.user.resources.getSkin(),
+                cape: this.user.resources.getCape(),
             })
 
             this.viewer.renderer.setClearColor(0xc6c9de)
@@ -86,18 +86,26 @@ export default {
             this.$refs.capeInput.click()
         },
         async updateSkin(event) {
-            const skin = event.target.files[0]
+            try {
+                const skin = event.target.files[0]
 
-            await this.user.updateSkin(skin)
+                await this.user.resources.updateSkin(skin)
 
-            this.$mitter.emit('skin-updated')
-            this.skinReader.readAsDataURL(skin)
+                this.$mitter.emit('skin-updated')
+                this.skinReader.readAsDataURL(skin)
+            } catch (e) {
+                console.error(e)
+            }
         },
         async updateCape(event) {
-            const cape = event.target.files[0]
+            try {
+                const cape = event.target.files[0]
 
-            await this.user.updateCape(cape)
-            this.capeReader.readAsDataURL(cape)
+                await this.user.resources.updateCape(cape)
+                this.capeReader.readAsDataURL(cape)
+            } catch (e) {
+                console.error(e)
+            }
         },
     },
 }

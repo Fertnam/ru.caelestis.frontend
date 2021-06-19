@@ -27,6 +27,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { mapGetters } from 'vuex'
 import Menu from '@default-components/layout/navigation/Menu.vue'
 
 export default defineComponent({
@@ -35,9 +36,9 @@ export default defineComponent({
         Menu,
     },
     computed: {
-        isAuth(): boolean {
-            return this.$store.getters['auth/user'].isAuth()
-        },
+        ...mapGetters({
+            isAuth: 'auth/isAuth',
+        }),
     },
 })
 </script>

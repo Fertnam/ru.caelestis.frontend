@@ -13,6 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { mapGetters } from 'vuex'
 import AuthForm from '@default-components/layout/aside/blocks/AuthForm.vue'
 import UserPanel from '@default-components/layout/aside/blocks/UserPanel.vue'
 
@@ -23,9 +24,9 @@ export default defineComponent({
         UserPanel,
     },
     computed: {
-        isAuth(): boolean {
-            return this.$store.getters['auth/user'].isAuth()
-        },
+        ...mapGetters({
+            isAuth: 'auth/isAuth',
+        }),
     },
 })
 </script>

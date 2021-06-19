@@ -156,7 +156,7 @@
 import { defineComponent } from 'vue'
 import { caption as captionStyle } from '@default-scss-modules/caption.module.scss'
 import formStyles from '@default-scss-modules/form.module.scss'
-import { UserRegisterFields } from '@api/Users'
+import { UserRegisterFields } from '@classes/types/User'
 import useVuelidate from '@vuelidate/core'
 import {
     alphaNum,
@@ -218,7 +218,7 @@ export default defineComponent({
                     password_confirmation: this.passwordConfirm,
                 }
 
-                await this.$api.users.create(data)
+                await this.$services.users.create(data)
 
                 this.status = RegistrationStatus.Success
             } catch (e) {

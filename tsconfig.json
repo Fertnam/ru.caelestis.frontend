@@ -25,9 +25,6 @@
             "@classes/*": [
                 "src/classes/*"
             ],
-            "@api/*": [
-                "src/classes/api/*"
-            ],
             "@models/*": [
                 "src/classes/models/*"
             ],

@@ -15,7 +15,6 @@ module.exports = {
                 '@': path.resolve('src'),
                 '@plugins': path.resolve('src/plugins'),
                 '@classes': path.resolve('src/classes'),
-                '@api': path.resolve('src/classes/api'),
                 '@models': path.resolve('src/classes/models'),
                 '@services': path.resolve('src/classes/services'),
                 '@store': path.resolve('src/store'),

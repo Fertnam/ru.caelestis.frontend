@@ -30,8 +30,11 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    if (to.meta.requiresAuth && !store.getters['auth/user'].isAuth()) {
+    const isGuest = store.getters['auth/isGuest']
+
+    if (to.meta.requiresAuth && isGuest) {
         next(from)
+        return
     }
 
     next()

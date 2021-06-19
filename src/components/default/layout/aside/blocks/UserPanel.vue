@@ -61,6 +61,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import AsideBlock from '@default-components/layout/aside/Block.vue'
+import { User } from '@models/User'
+import { SkinViewMode } from '@classes/types/User'
 
 export default defineComponent({
     name: 'UserPanel',
@@ -71,13 +73,12 @@ export default defineComponent({
         return { skinUpdatedAt: Date.now() }
     },
     computed: {
-        user() {
-            return this.$store.getters['auth/user']
+        user(): User {
+            return this.$store.getters['auth/user'] as User
         },
         skinHead(): string {
-            return `${this.user.getSkinFull(3)}&updated_at=${
-                this.skinUpdatedAt
-            }`
+            const skinHead = this.user.resources.getSkinView(SkinViewMode.HEAD)
+            return `${skinHead}&updated_at=${this.skinUpdatedAt}`
         },
     },
     mounted() {

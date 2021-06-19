@@ -1,29 +1,13 @@
 import axios from 'axios'
+import { UserFields, SkinViewMode } from '@classes/types/User'
 
 export interface IAuthenticate {
-    isAuth(): boolean
-}
-
-export type UserFields = {
-    id: number
-    created_at: string
-
-    username: string
-    email: string
-    ban_reason: string
-    activation_code: string
-
-    balance: number
-    cs_group_id: number
-    xf_user_id: number | null
-
-    updated_at: string | null
-    email_verified_at: string | null
+    isGuest(): boolean
 }
 
 export class Guest implements IAuthenticate {
-    public isAuth(): boolean {
-        return false
+    public isGuest(): boolean {
+        return true
     }
 }
 
@@ -43,6 +27,8 @@ export class User implements IAuthenticate {
     private updatedAt: string | null
     private emailVerifiedAt: string | null
 
+    public readonly resources: UserResources
+
     public constructor(fields: UserFields) {
         this.id = fields.id
         this.createdAt = fields.created_at
@@ -58,10 +44,12 @@ export class User implements IAuthenticate {
 
         this.updatedAt = fields.updated_at
         this.emailVerifiedAt = fields.email_verified_at
+
+        this.resources = new UserResources(this)
     }
 
-    public isAuth(): boolean {
-        return true
+    public isGuest(): boolean {
+        return false
     }
 
     public getUsername(): string {
@@ -85,6 +73,32 @@ export class User implements IAuthenticate {
 
     public getBalance(): number {
         return this.balance
+    }
+}
+
+class UserResources {
+    private readonly skin: string
+    private readonly cape: string
+
+    private readonly collectedSkin: string
+
+    public constructor(user: User) {
+        this.skin = `http://127.0.0.1:8000/image/skins/${user.getUsername()}.png`
+        this.cape = `http://127.0.0.1:8000/image/cloaks/${user.getUsername()}.png`
+
+        this.collectedSkin = `http://127.0.0.1:8000/scripts/skin.php?user=${user.getUsername()}`
+    }
+
+    public getSkin(): string {
+        return this.skin
+    }
+
+    public getCape(): string {
+        return this.cape
+    }
+
+    public getSkinView(mode: SkinViewMode, size: number = 128): string {
+        return `${this.collectedSkin}&mode=${mode}&size=${size}`
     }
 
     public async updateSkin(skin: File): Promise<void> {
@@ -111,17 +125,5 @@ export class User implements IAuthenticate {
                 'Content-Type': 'multipart/form-data',
             },
         })
-    }
-
-    public getSkin(): string {
-        return `http://127.0.0.1:8000/image/skins/${this.username}.png`
-    }
-
-    public getCape(): string {
-        return `http://127.0.0.1:8000/image/cloaks/${this.username}.png`
-    }
-
-    public getSkinFull(mode: number, size: number = 128): string {
-        return `http://127.0.0.1:8000/scripts/skin.php?user=${this.username}&mode=${mode}&size=${size}`
     }
 }

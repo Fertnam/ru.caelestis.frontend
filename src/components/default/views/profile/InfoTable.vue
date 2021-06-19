@@ -26,6 +26,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Table from '@default-components/Table.vue'
+import { User } from '@models/User'
 
 export default defineComponent({
     name: 'InfoTable',
@@ -33,8 +34,8 @@ export default defineComponent({
         Table,
     },
     computed: {
-        user() {
-            return this.$store.getters['auth/user']
+        user(): User {
+            return this.$store.getters['auth/user'] as User
         },
     },
 })

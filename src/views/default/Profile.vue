@@ -18,6 +18,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { mapGetters } from 'vuex'
 import Skin from '@default-components/views/profile/Skin.vue'
 import InfoTable from '@default-components/views/profile/InfoTable.vue'
 import ChangeEmail from '@default-components/views/profile/ChangeEmail.vue'
@@ -40,13 +41,13 @@ export default defineComponent({
         }
     },
     computed: {
-        isAuth(): boolean {
-            return this.$store.getters['auth/user'].isAuth()
-        },
+        ...mapGetters({
+            isAuth: 'auth/isAuth',
+        }),
     },
     watch: {
-        isAuth(newValue: boolean): void {
-            if (!newValue) {
+        isAuth(isAuth: boolean): void {
+            if (!isAuth) {
                 this.$router.push({ name: 'default.index' })
             }
         },

@@ -21,7 +21,7 @@
                 />
 
                 <div
-                    v-if="status === 'error'"
+                    v-if="error"
                     :class="formStyles.formMessage"
                     v-text="error"
                 />
@@ -36,15 +36,7 @@
 import { defineComponent } from 'vue'
 import AsideBlock from '@default-components/layout/aside/Block.vue'
 import formStyles from '@default-scss-modules/form.module.scss'
-import { UserAuthFields } from '@api/Users'
-
-enum AuthStatus {
-    Success = 'success',
-    Error = 'error',
-    Unknown = 'unknown',
-}
-
-let status: AuthStatus = AuthStatus.Unknown
+import { UserAuthFields } from '@classes/types/User'
 
 export default defineComponent({
     name: 'AuthForm',
@@ -70,7 +62,7 @@ export default defineComponent({
 
                 await this.$services.users.login(data)
 
-                this.status = AuthStatus.Success
+                this.error = ''
             } catch (e) {
                 if (e.response.status === 401) {
                     this.error = 'Неверный логин или пароль'
@@ -78,8 +70,6 @@ export default defineComponent({
                     this.error =
                         'Возникла неизвестная ошибка. Обратитесь к администрации'
                 }
-
-                this.status = AuthStatus.Error
             }
         },
     },
