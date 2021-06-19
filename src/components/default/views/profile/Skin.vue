@@ -53,9 +53,14 @@ export default {
                 canvas: this.$refs.canvas,
                 width: 215,
                 height: 430,
-                skin: this.user.resources.getSkin(),
                 cape: this.user.resources.getCape(),
             })
+
+            const loadSkin = (skin) => {
+                this.viewer.loadSkin(skin)
+            }
+
+            this.user.resources.getSkin().then(loadSkin).catch(loadSkin)
 
             this.viewer.renderer.setClearColor(0xc6c9de)
 

@@ -77,20 +77,41 @@ export class User implements IAuthenticate {
 }
 
 class UserResources {
+    public readonly DEFAULT_SKIN = `${process.env.VUE_APP_API}/image/skins/@default.png`
+
     private readonly skin: string
     private readonly cape: string
 
-    private readonly collectedSkin: string
+    private readonly skinView: string
 
     public constructor(user: User) {
-        this.skin = `http://127.0.0.1:8000/image/skins/${user.getUsername()}.png`
-        this.cape = `http://127.0.0.1:8000/image/cloaks/${user.getUsername()}.png`
+        this.skin = `${
+            process.env.VUE_APP_API
+        }/image/skins/${user.getUsername()}.png`
 
-        this.collectedSkin = `http://127.0.0.1:8000/scripts/skin.php?user=${user.getUsername()}`
+        this.cape = `${
+            process.env.VUE_APP_API
+        }/image/cloaks/${user.getUsername()}.png`
+
+        this.skinView = `${
+            process.env.VUE_APP_API
+        }/scripts/skin.php?user=${user.getUsername()}`
     }
 
-    public getSkin(): string {
-        return this.skin
+    public getSkin(): Promise<string> {
+        return new Promise((resolve, reject) => {
+            const image: HTMLImageElement = new Image()
+
+            image.onerror = image.onabort = () => {
+                reject(this.DEFAULT_SKIN)
+            }
+
+            image.onload = () => {
+                resolve(this.skin)
+            }
+
+            image.src = this.skin
+        })
     }
 
     public getCape(): string {
@@ -98,7 +119,7 @@ class UserResources {
     }
 
     public getSkinView(mode: SkinViewMode, size: number = 128): string {
-        return `${this.collectedSkin}&mode=${mode}&size=${size}`
+        return `${this.skinView}&mode=${mode}&size=${size}`
     }
 
     public async updateSkin(skin: File): Promise<void> {
@@ -106,12 +127,16 @@ class UserResources {
 
         formData.append('image', skin)
 
-        await axios.post(process.env.VUE_APP_API + 'upload/skin', formData, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'multipart/form-data',
-            },
-        })
+        await axios.post(
+            `${process.env.VUE_APP_API}/api/upload/skin`,
+            formData,
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'multipart/form-data',
+                },
+            }
+        )
     }
 
     public async updateCape(cape: File): Promise<void> {
@@ -119,11 +144,15 @@ class UserResources {
 
         formData.append('image', cape)
 
-        await axios.post(process.env.VUE_APP_API + 'upload/cloak', formData, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'multipart/form-data',
-            },
-        })
+        await axios.post(
+            `${process.env.VUE_APP_API}/api/upload/cloak`,
+            formData,
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'multipart/form-data',
+                },
+            }
+        )
     }
 }
