@@ -39,6 +39,11 @@ const routes: RouteRecordRaw[] = [
             requiresAuth: true,
         },
     },
+    {
+        path: 'activation/:code',
+        name: 'default.activation',
+        component: () => import('@default-views/Activation.vue'),
+    },
 ]
 
 export default routes

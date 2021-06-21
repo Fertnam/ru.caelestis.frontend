@@ -12,6 +12,12 @@ export default class UsersService {
         return axios.post(`${process.env.VUE_APP_API}/api/register`, data)
     }
 
+    public activate(code: string): Promise<AxiosStatic> {
+        return axios.put(`${process.env.VUE_APP_API}/api/activate`, {
+            activation_code: code,
+        })
+    }
+
     public async login(data: UserAuthFields): Promise<void> {
         const {
             data: { token },

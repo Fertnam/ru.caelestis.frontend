@@ -19,6 +19,7 @@ import {
     faPlusCircle,
     faMinusCircle,
     faCreditCard,
+    faSpinner,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -38,7 +39,8 @@ library.add(
     faCalendarAlt,
     faPlusCircle,
     faMinusCircle,
-    faCreditCard
+    faCreditCard,
+    faSpinner
 )
 
 export default {

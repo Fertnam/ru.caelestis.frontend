@@ -52,5 +52,15 @@ export default defineComponent({
             background-color: var(--light-blue-v1);
         }
     }
+
+    @include _812 {
+        tr {
+            background-color: var(--light-blue-v1) !important;
+        }
+
+        td {
+            text-align: center;
+        }
+    }
 }
 </style>

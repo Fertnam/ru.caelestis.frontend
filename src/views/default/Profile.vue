@@ -99,9 +99,18 @@ export default defineComponent({
 .personal {
     display: flex;
 
+    @include _812 {
+        flex-direction: column;
+    }
+
     &__skin {
         margin-right: 20px;
         user-select: none;
+
+        @include _812 {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
     }
 
     &__info {

@@ -132,6 +132,12 @@ export default {
     display: flex;
     flex-direction: column;
 
+    @include _812 {
+        &__canvas {
+            margin: 0 auto;
+        }
+    }
+
     &__operators {
         &-item {
             display: block;

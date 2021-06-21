@@ -65,7 +65,7 @@ export default defineComponent({
                 this.error = ''
             } catch (e) {
                 if (e.response.status === 401) {
-                    this.error = 'Неверный логин или пароль'
+                    this.error = e.response.data.message
                 } else {
                     this.error =
                         'Возникла неизвестная ошибка. Обратитесь к администрации'
