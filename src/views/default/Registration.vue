@@ -2,23 +2,6 @@
     <div :class="$style.page">
         <h1 :class="[captionStyle, $style.pageCaption]">Регистрация</h1>
 
-        <transition
-            mode="out-in"
-            enter-active-class="animate__animated animate__fadeIn animate__fast"
-            leave-active-class="animate__animated animate__fadeOut animate__fast"
-        >
-            <div v-if="status === 'success'" :class="$style.pageResult">
-                Регистрация прошла успешно. Подтвердите электронную почту
-            </div>
-
-            <div
-                v-else-if="status === 'error'"
-                :class="[$style.pageResult, $style.pageResultError]"
-            >
-                При регистрации возникла ошибка. Попробуйте еще раз
-            </div>
-        </transition>
-
         <form
             :class="[formStyles.form, formStyles.formThemeMain]"
             @submit.prevent="onSubmit"
@@ -147,13 +130,18 @@
                 </div>
             </div>
 
-            <button :class="formStyles.formButton">Зарегистрироваться</button>
+            <button :class="formStyles.formButton" :disabled="inProgress">
+                Зарегистрироваться
+            </button>
         </form>
+
+        <Banner ref="banner" />
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import Banner from '@default-components/Banner.vue'
 import { caption as captionStyle } from '@default-scss-modules/caption.module.scss'
 import formStyles from '@default-scss-modules/form.module.scss'
 import { UserRegisterFields } from '@classes/types/User'
@@ -167,23 +155,18 @@ import {
     sameAs,
 } from '@vuelidate/validators'
 
-enum RegistrationStatus {
-    Success = 'success',
-    Error = 'error',
-    Unknown = 'unknown',
-}
-
-let status: RegistrationStatus = RegistrationStatus.Unknown
-
 export default defineComponent({
     name: 'RegistrationPage',
+    components: {
+        Banner,
+    },
     data() {
         return {
             name: '',
             email: '',
             password: '',
             passwordConfirm: '',
-            status,
+            inProgress: false,
             v$: useVuelidate(),
             captionStyle,
             formStyles,
@@ -203,28 +186,58 @@ export default defineComponent({
         }
     },
     methods: {
-        async onSubmit() {
+        onSubmit() {
             this.v$.$touch()
 
             if (this.v$.$error) {
                 return
             }
 
-            try {
-                const data: UserRegisterFields = {
-                    username: this.name,
-                    email: this.email,
-                    password: this.password,
-                    password_confirmation: this.passwordConfirm,
+            this.register()
+        },
+        async register() {
+            if (!this.inProgress) {
+                this.inProgress = true
+
+                try {
+                    const data: UserRegisterFields = {
+                        username: this.name,
+                        email: this.email,
+                        password: this.password,
+                        password_confirmation: this.passwordConfirm,
+                    }
+
+                    await this.$services.users.create(data)
+                    await this.showSuccessBanner()
+                    await this.$router.push({ name: 'default.index' })
+
+                    this.resetFields()
+                } catch (e) {
+                    console.error(e)
+                    await this.showErrorBanner()
+                } finally {
+                    this.inProgress = false
                 }
-
-                await this.$services.users.create(data)
-
-                this.status = RegistrationStatus.Success
-            } catch (e) {
-                console.error(e)
-                this.status = RegistrationStatus.Error
             }
+        },
+        showErrorBanner(): Promise<void> {
+            const message: string =
+                'При регистрации возникла ошибка. Попробуйте ещё раз'
+
+            return this.$refs.banner.show(
+                message,
+                this.$refs.banner.Types.ERROR
+            )
+        },
+        showSuccessBanner(): Promise<void> {
+            const message: string =
+                'Регистрация прошла успешно. Подтвердите аккаунт через электронную почту'
+
+            return this.$refs.banner.show(message)
+        },
+        resetFields() {
+            this.name = this.email = this.password = this.passwordConfirm = ''
+            this.v$.$reset()
         },
     },
 })
@@ -234,23 +247,6 @@ export default defineComponent({
 .page {
     &__caption {
         margin-bottom: 40px;
-    }
-
-    &__result {
-        @include box-shadow(5px, var(--dark-blue-v1));
-
-        margin-bottom: 30px;
-        padding: 12px;
-
-        font-size: 1.1em;
-        font-weight: bold;
-
-        composes: light-theme light-theme--v_1 from '~@default-scss-modules/theme';
-
-        &--error {
-            @include red-theme;
-            @include box-shadow(5px, var(--dark-red));
-        }
     }
 }
 </style>

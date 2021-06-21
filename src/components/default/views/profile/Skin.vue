@@ -30,6 +30,12 @@ import {
 
 export default {
     name: 'Skin',
+    emits: [
+        'skin-updated',
+        'skin-updating-failed',
+        'cape-updated',
+        'cape-updating-failed',
+    ],
     data() {
         return {
             viewer: null,
@@ -98,8 +104,10 @@ export default {
 
                 this.$mitter.emit('skin-updated')
                 this.skinReader.readAsDataURL(skin)
+
+                this.$emit('skin-updated')
             } catch (e) {
-                console.error(e)
+                this.$emit('skin-updating-failed')
             }
         },
         async updateCape(event) {
@@ -108,8 +116,11 @@ export default {
 
                 await this.user.resources.updateCape(cape)
                 this.capeReader.readAsDataURL(cape)
+
+                this.$emit('cape-updated')
             } catch (e) {
                 console.error(e)
+                this.$emit('cape-updating-failed')
             }
         },
     },

@@ -77,7 +77,7 @@ export class User implements IAuthenticate {
 }
 
 class UserResources {
-    public readonly DEFAULT_SKIN = `${process.env.VUE_APP_API}/image/skins/@default.png`
+    public readonly DEFAULT_SKIN = `${process.env.VUE_APP_API}/cabinet/skins/@default.png`
 
     private readonly skin: string
     private readonly cape: string
@@ -87,11 +87,11 @@ class UserResources {
     public constructor(user: User) {
         this.skin = `${
             process.env.VUE_APP_API
-        }/image/skins/${user.getUsername()}.png`
+        }/cabinet/skins/${user.getUsername()}.png`
 
         this.cape = `${
             process.env.VUE_APP_API
-        }/image/cloaks/${user.getUsername()}.png`
+        }/cabinet/capes/${user.getUsername()}.png`
 
         this.skinView = `${
             process.env.VUE_APP_API

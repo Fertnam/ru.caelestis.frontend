@@ -1,8 +1,8 @@
 <template>
     <div :class="$style.toggleContent">
-        <div :class="$style.toggleContentTitle" @click="isOpened = !isOpened">
+        <div :class="$style.toggleContentTitle" @click="isOpen = !isOpen">
             <fa-icon
-                v-if="isOpened"
+                v-if="isOpen"
                 :class="$style.toggleContentIcon"
                 icon="minus-circle"
             />
@@ -15,7 +15,7 @@
             <slot name="title" />
         </div>
 
-        <div v-show="isOpened" :class="$style.toggleContentBody">
+        <div v-show="isOpen" :class="$style.toggleContentBody">
             <slot />
         </div>
     </div>
@@ -28,7 +28,7 @@ export default defineComponent({
     name: 'ToggleContent',
     data() {
         return {
-            isOpened: false,
+            isOpen: false,
         }
     },
 })

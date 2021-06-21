@@ -48,6 +48,10 @@ $main-form-item-border-size: 2.5px;
 
     &__button {
         user-select: none;
+
+        &:disabled {
+            opacity: .5;
+        }
     }
 
     &__message {

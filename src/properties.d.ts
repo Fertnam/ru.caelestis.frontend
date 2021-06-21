@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
     interface ComponentCustomProperties {
         $store: Store
         $style: any
+        $refs: any
         $timeout: (time: number) => Promise<void>
         $services: Services
         $axios: AxiosStatic
