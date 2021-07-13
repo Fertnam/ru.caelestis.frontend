@@ -7,7 +7,11 @@
             enter-active-class="animate__animated animate__bounceIn"
             leave-active-class="animate__animated animate__zoomOut"
         >
-            <a v-if="isAuth" :class="$style.navigationLink" href="#">
+            <a
+                v-if="isAuth"
+                :class="$style.navigationLink"
+                href="/files/Caelestis.jar"
+            >
                 Скачать лаунчер
             </a>
 

@@ -4,34 +4,62 @@
         <template #default>
             <form
                 :class="[formStyles.form, formStyles.formThemeMain]"
-                @submit.prevent="onSubmit"
+                action="https://merchant.intellectmoney.ru/ru/"
+                name="pay"
+                method="POST"
             >
+                <input type="hidden" name="eshopId" value="459474" />
+                <input type="hidden" name="orderId" :value="Date.now()" />
+                <input
+                    id="preference"
+                    type="hidden"
+                    name="preference"
+                    value=""
+                />
+                <input
+                    type="hidden"
+                    name="serviceName"
+                    value="Пополнение баланса личного кабинета"
+                />
+                <input
+                    id="recipientAmount"
+                    v-model="sum"
+                    type="hidden"
+                    name="recipientAmount"
+                />
+                <input type="hidden" name="recipientCurrency" value="TST" />
+                <input
+                    type="hidden"
+                    name="user_email"
+                    value="theTopic@internet.ru"
+                />
+                <input
+                    type="hidden"
+                    name="successUrl"
+                    value="http://caelestis.ru/profile"
+                />
+                <input type="hidden" name="HoldMode" value="0" />
+                <input
+                    type="hidden"
+                    name="UserName"
+                    :value="user.getUsername()"
+                />
+
                 <div :class="formStyles.formItem">
                     <label :class="formStyles.formLabel">
                         Сумма пополнения:
                         <input
-                            v-model="v$.sum.$model"
+                            v-model="sum"
+                            name="Amount"
                             :class="formStyles.formInput"
                             type="text"
                         />
                     </label>
-                    <div v-if="v$.sum.$error" :class="[formStyles.formMessage]">
-                        <fa-icon
-                            :class="formStyles.formMessageIcon"
-                            icon="exclamation-circle"
-                        />
-
-                        <template v-if="v$.sum.required.$invalid">
-                            Укажите сумму пополнения
-                        </template>
-
-                        <template v-else-if="v$.sum.integer.$invalid">
-                            Сумма пополнения должна быть целым числом
-                        </template>
-                    </div>
                 </div>
 
-                <button :class="formStyles.formButton">Пополнить</button>
+                <button type="submit" :class="formStyles.formButton">
+                    Пополнить
+                </button>
             </form>
         </template>
     </ToggleContent>
@@ -41,8 +69,7 @@
 import { defineComponent } from 'vue'
 import ToggleContent from '@default-components/ToggleContent.vue'
 import formStyles from '@default-scss-modules/form.module.scss'
-import useVuelidate from '@vuelidate/core'
-import { required, integer } from '@vuelidate/validators'
+import { User } from '@models/User'
 
 export default defineComponent({
     name: 'ReplenishBalance',
@@ -53,23 +80,11 @@ export default defineComponent({
         return {
             formStyles,
             sum: null,
-            v$: useVuelidate(),
         }
     },
-    validations() {
-        return {
-            sum: { required, integer },
-        }
-    },
-    methods: {
-        onSubmit() {
-            this.v$.$touch()
-
-            if (this.v$.$error) {
-                return
-            }
-
-            alert(`Баланс пополнен на ${this.sum} рублей`)
+    computed: {
+        user(): User {
+            return this.$store.getters['auth/user']
         },
     },
 })

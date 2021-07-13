@@ -9,11 +9,11 @@ import {
 
 export default class UsersService {
     public create(data: UserRegisterFields): Promise<AxiosStatic> {
-        return axios.post(`${process.env.VUE_APP_API}/api/register`, data)
+        return axios.post(`${process.env.VUE_APP_API}/register`, data)
     }
 
     public activate(code: string): Promise<AxiosStatic> {
-        return axios.put(`${process.env.VUE_APP_API}/api/activate`, {
+        return axios.put(`${process.env.VUE_APP_API}/activate`, {
             activation_code: code,
         })
     }
@@ -21,14 +21,14 @@ export default class UsersService {
     public async login(data: UserAuthFields): Promise<void> {
         const {
             data: { token },
-        } = await axios.post(`${process.env.VUE_APP_API}/api/login`, data)
+        } = await axios.post(`${process.env.VUE_APP_API}/login`, data)
 
         localStorage.setItem('token', token)
         this.saveInStoreByAuthToken()
     }
 
     public async logout(): Promise<void> {
-        await axios.post(`${process.env.VUE_APP_API}/api/logout`, null, {
+        await axios.post(`${process.env.VUE_APP_API}/logout`, null, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -40,7 +40,7 @@ export default class UsersService {
 
     public async getByAuthToken(): Promise<User> {
         const { data: user } = await axios.get(
-            `${process.env.VUE_APP_API}/api/user`,
+            `${process.env.VUE_APP_API}/user`,
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,

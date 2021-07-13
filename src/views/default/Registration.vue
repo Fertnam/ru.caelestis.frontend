@@ -215,8 +215,6 @@ export default defineComponent({
                 } catch (e) {
                     console.error(e)
                     await this.showErrorBanner()
-                } finally {
-                    this.inProgress = false
                 }
             }
         },

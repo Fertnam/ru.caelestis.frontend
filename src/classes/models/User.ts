@@ -76,6 +76,11 @@ export class User implements IAuthenticate {
     }
 }
 
+export enum UpdateMode {
+    SKIN = 'skin',
+    CAPE = 'cloak',
+}
+
 class UserResources {
     public readonly DEFAULT_SKIN = `${process.env.VUE_APP_API}/cabinet/skins/@default.png`
 
@@ -122,30 +127,21 @@ class UserResources {
         return `${this.skinView}&mode=${mode}&size=${size}`
     }
 
-    public async updateSkin(skin: File): Promise<void> {
-        const formData: FormData = new FormData()
-
-        formData.append('image', skin)
-
-        await axios.post(
-            `${process.env.VUE_APP_API}/api/upload/skin`,
-            formData,
-            {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                    'Content-Type': 'multipart/form-data',
-                },
-            }
-        )
+    public updateSkin(skin: File): Promise<void> {
+        return this.update(skin, UpdateMode.SKIN)
     }
 
-    public async updateCape(cape: File): Promise<void> {
+    public updateCape(cape: File): Promise<void> {
+        return this.update(cape, UpdateMode.CAPE)
+    }
+
+    private async update(file: File, mode: UpdateMode): Promise<void> {
         const formData: FormData = new FormData()
 
-        formData.append('image', cape)
+        formData.append('image', file)
 
         await axios.post(
-            `${process.env.VUE_APP_API}/api/upload/cloak`,
+            `${process.env.VUE_APP_API}/upload/${mode}`,
             formData,
             {
                 headers: {
