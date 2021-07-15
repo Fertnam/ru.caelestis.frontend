@@ -19,59 +19,8 @@
             "@/*": [
                 "src/*"
             ],
-            "@plugins/*": [
-                "src/plugins/*"
-            ],
-            "@classes/*": [
-                "src/classes/*"
-            ],
-            "@models/*": [
-                "src/classes/models/*"
-            ],
-            "@services/*": [
-                "src/classes/services/*"
-            ],
-            "@store/*": [
-                "src/store/*"
-            ],
-            "@layouts/*": [
-                "src/layouts/*"
-            ],
-            "@default-views/*": [
-                "src/views/default/*"
-            ],
-            "@admin-views/*": [
-                "src/views/admin/*"
-            ],
-            "@default-components/*": [
-                "src/components/default/*"
-            ],
-            "@admin-components/*": [
-                "src/components/admin/*"
-            ],
-            "@global-components/*": [
-                "src/components/global/*"
-            ],
-            "@default-data/*": [
-                "src/data/default/*"
-            ],
-            "@admin-data/*": [
-                "src/data/admin/*"
-            ],
-            "@global-data/*": [
-                "src/data/global/*"
-            ],
             "@scss/*": [
                 "src/assets/scss/*"
-            ],
-            "@default-scss-modules/*": [
-                "src/assets/scss/modules/default/*"
-            ],
-            "@admin-scss-modules/*": [
-                "src/assets/scss/modules/admin/*"
-            ],
-            "@global-scss-modules/*": [
-                "src/assets/scss/modules/global/*"
             ]
         },
         "lib": [

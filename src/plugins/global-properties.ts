@@ -1,7 +1,6 @@
 import { App } from 'vue'
 import axios from 'axios'
 import mitt from 'mitt'
-import services from '@services/index'
 
 export default {
     install(app: App): void {
@@ -15,6 +14,5 @@ export default {
         app.config.globalProperties.$mitter = mitt()
 
         app.config.globalProperties.$timeout = timeout
-        app.config.globalProperties.$services = services
     },
 }

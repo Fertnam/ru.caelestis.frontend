@@ -25,6 +25,6 @@ export default defineComponent({
 <style lang="scss" module>
 .main {
     padding: var(--base-padding-of-area);
-    composes: light-theme light-theme--v_3 from '~@default-scss-modules/theme';
+    composes: lightThemeV3 from '~@scss/modules/default/theme.module.scss';
 }
 </style>

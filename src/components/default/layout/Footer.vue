@@ -1,6 +1,6 @@
 <template>
     <footer :class="$style.footer">
-        <div :class="$style.footerCopyright">© 2021 Caelestis</div>
+        <div :class="$style.copyright">© 2021 Caelestis</div>
     </footer>
 </template>
 
@@ -15,9 +15,9 @@ export default defineComponent({
 <style lang="scss" module>
 .footer {
     padding: 40px var(--base-padding-of-area);
-    composes: dark-theme from '~@default-scss-modules/theme';
+    composes: darkTheme from '~@scss/modules/default/theme.module.scss';
 
-    &__copyright {
+    & > .copyright {
         text-align: center;
     }
 }

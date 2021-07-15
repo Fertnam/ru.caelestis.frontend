@@ -45,6 +45,6 @@ library.add(
 
 export default {
     install(app: App): void {
-        app.component('fa-icon', FontAwesomeIcon)
+        app.component('FaIcon', FontAwesomeIcon)
     },
 }

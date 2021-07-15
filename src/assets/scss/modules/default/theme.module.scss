@@ -1,19 +1,28 @@
-.dark-theme {
-    @include dark-theme;
+.darkTheme {
+    color: var(--blue);
+    background-color: var(--dark-blue-v2);
 }
 
-.light-theme {
+.redTheme {
+    color: var(--dark-red);
+    background-color: var(--red);
+}
+
+%lightTheme {
     color: var(--dark-blue-v2);
+}
 
-    &--v_1 {
-        background-color: var(--blue);
-    }
+.lightThemeV1 {
+    @extend %lightTheme;
+    background-color: var(--blue);
+}
 
-    &--v_2 {
-        background-color: var(--light-blue-v1);
-    }
+.lightThemeV2 {
+    @extend %lightTheme;
+    background-color: var(--light-blue-v1);
+}
 
-    &--v_3 {
-        background-color: var(--light-blue-v2);
-    }
+.lightThemeV3 {
+    @extend %lightTheme;
+    background-color: var(--light-blue-v2);
 }

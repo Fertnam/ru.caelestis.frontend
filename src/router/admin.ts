@@ -4,7 +4,7 @@ const routes: RouteRecordRaw[] = [
     {
         path: '',
         name: 'admin.index',
-        component: () => import('@admin-views/Index.vue'),
+        component: () => import('@/views/admin/Index.vue'),
     },
 ]
 

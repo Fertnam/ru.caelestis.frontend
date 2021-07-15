@@ -1,9 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import store from '@store/index'
 
 // Layouts
-import DefaultLayout from '@layouts/default.vue'
-import AdminLayout from '@layouts/admin.vue'
+import DefaultLayout from '@/layouts/default.vue'
+import AdminLayout from '@/layouts/admin.vue'
 
 // Страницы
 import DefaultPages from './default'
@@ -27,17 +26,6 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
-})
-
-router.beforeEach((to, from, next) => {
-    const isGuest = store.getters['auth/isGuest']
-
-    if (to.meta.requiresAuth && isGuest) {
-        next(from)
-        return
-    }
-
-    next()
 })
 
 export default router

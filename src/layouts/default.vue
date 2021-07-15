@@ -1,24 +1,26 @@
 <template>
-    <div :class="$style.layout">
-        <TheHeader :class="$style.layoutHeader" />
-        <TheNavigation :class="$style.layoutNavigation" />
-        <TheMain :class="$style.layoutMain" />
-        <TheAside :class="$style.layoutAside" />
-        <TheFooter :class="$style.layoutFooter" />
-    </div>
+    <Container :class="$style.layout">
+        <TheHeader :class="$style.header" />
+        <TheNavigation :class="$style.navigation" />
+        <TheMain :class="$style.main" />
+        <TheAside :class="$style.aside" />
+        <TheFooter :class="$style.footer" />
+    </Container>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import TheHeader from '@default-components/layout/Header.vue'
-import TheNavigation from '@default-components/layout/navigation/Index.vue'
-import TheMain from '@default-components/layout/Main.vue'
-import TheAside from '@default-components/layout/aside/Index.vue'
-import TheFooter from '@default-components/layout/Footer.vue'
+import Container from '@/components/global/Container.vue'
+import TheHeader from '@/components/default/layout/Header.vue'
+import TheNavigation from '@/components/default/layout/navigation/Navigation.vue'
+import TheMain from '@/components/default/layout/Main.vue'
+import TheAside from '@/components/default/layout/aside/Aside.vue'
+import TheFooter from '@/components/default/layout/Footer.vue'
 
 export default defineComponent({
     name: 'DefaultLayout',
     components: {
+        Container,
         TheHeader,
         TheNavigation,
         TheMain,
@@ -57,19 +59,7 @@ export default defineComponent({
         'main aside'
         'footer footer';
 
-    composes: layout from '~@global-scss-modules/layout';
-    composes: container from '~@global-scss-modules/container';
-
-    @include _812 {
-        --base-padding-of-area: 20px;
-
-        grid-template-areas:
-            'header header'
-            'navigation navigation'
-            'aside aside'
-            'main main'
-            'footer footer';
-    }
+    composes: layout from '~@scss/modules/global/layout.module.scss';
 
     &:before {
         position: fixed;
@@ -91,23 +81,23 @@ export default defineComponent({
         content: '';
     }
 
-    &__header {
+    & > .header {
         grid-area: header;
     }
 
-    &__navigation {
+    & > .navigation {
         grid-area: navigation;
     }
 
-    &__main {
+    & > .main {
         grid-area: main;
     }
 
-    &__aside {
+    & > .aside {
         grid-area: aside;
     }
 
-    &__footer {
+    & > .footer {
         grid-area: footer;
     }
 }

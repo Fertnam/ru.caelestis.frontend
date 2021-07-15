@@ -20,8 +20,6 @@ export default defineComponent({
 
     background-color: #f7f7f7;
 
-    composes: layout from '~@global-scss-modules/layout';
-
     &__title {
         user-select: none;
     }

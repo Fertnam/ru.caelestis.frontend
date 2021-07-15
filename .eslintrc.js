@@ -25,5 +25,6 @@ module.exports = {
         'vue/require-default-prop': 'error',
         'vue/attributes-order': 'error',
         'vue/custom-event-name-casing': ['error', 'kebab-case'],
+        'vue/no-deprecated-html-element-is': 'off',
     },
 }

@@ -5,11 +5,11 @@
             :to="{ name: 'default.index' }"
             custom
         >
-            <div :class="$style.headerLogo" @click="navigate">
+            <div :class="$style.logo" @click="navigate">
                 <img
-                    :class="$style.headerLogoImage"
+                    :class="$style.image"
                     src="/images/global/logo.png"
-                    alt="Логотип"
+                    alt="Логотип Caelestis"
                     draggable="false"
                 />
             </div>
@@ -33,7 +33,7 @@ export default defineComponent({
         padding: 40px;
     }
 
-    &__logo {
+    & > .logo {
         width: 250px;
         height: 60px;
 
@@ -49,7 +49,7 @@ export default defineComponent({
             width: 200px;
         }
 
-        &-image {
+        & > .image {
             width: 100%;
             height: 100%;
 
