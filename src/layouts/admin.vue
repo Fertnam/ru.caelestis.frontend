@@ -1,6 +1,6 @@
 <template>
     <div :class="$style.layout">
-        <h1 :class="$style.layoutTitle">Админ-панель [В разработке]</h1>
+        <h1 :class="$style.title">Админ-панель [В разработке]</h1>
     </div>
 </template>
 
@@ -20,7 +20,9 @@ export default defineComponent({
 
     background-color: #f7f7f7;
 
-    &__title {
+    composes: layout from '~@scss/modules/global/layout.module.scss';
+
+    & > .title {
         user-select: none;
     }
 }

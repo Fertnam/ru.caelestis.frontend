@@ -1,6 +1,6 @@
 <template>
     <nav :class="$style.navigation">
-        <Menu :class="$style.menu" />
+        <Menu :items="menuItems" :class="$style.menu" />
 
         <router-link
             :class="$style.link"
@@ -17,11 +17,59 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Menu from '@/components/default/layout/navigation/menu/Menu.vue'
+import { IMenuItem } from '@/types/Menu'
+
+const menuItems: IMenuItem[] = [
+    {
+        id: 1,
+        title: 'Главная',
+        icon: 'home',
+        to: { name: 'default.index' },
+    },
+    {
+        id: 2,
+        title: 'Форум',
+        icon: 'comments',
+        href: '/forum',
+    },
+    {
+        id: 3,
+        title: 'Сервера',
+        icon: 'gamepad',
+        submenuItems: [
+            { id: 1, title: 'Decor', href: '/forum' },
+            { id: 2, title: 'Horror', to: { name: 'admin.index' } },
+        ],
+    },
+    {
+        id: 4,
+        title: 'Банлист',
+        icon: 'scroll',
+        to: { name: 'admin.index' },
+    },
+    {
+        id: 5,
+        title: 'Донат',
+        icon: 'donate',
+        to: { name: 'admin.index' },
+    },
+    {
+        id: 6,
+        title: 'Правила',
+        icon: 'clipboard-list',
+        to: { name: 'admin.index' },
+    },
+]
 
 export default defineComponent({
     name: 'Navigation',
     components: {
         Menu,
+    },
+    data() {
+        return {
+            menuItems,
+        }
     },
 })
 </script>
@@ -45,6 +93,10 @@ export default defineComponent({
 
     & > .menu {
         margin-left: var(--base-padding-of-area);
+    }
+
+    & > .link {
+        margin-right: var(--base-padding-of-area);
     }
 }
 </style>
